@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,17 @@
     <title>رشد استار + استارت مالی</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <button id="goToHomePageButton">صفحه اصلی</button>
+    </div>
+    <script>
+      const goToHomePageButton = document.getElementById("goToHomePageButton");
+
+      goToHomePageButton.addEventListener("click", () => {
+        // انتقال به صفحه اصلی سایت (معمولاً با استفاده از window.location)
+        window.location.href = "/";
+      });
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
