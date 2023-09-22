@@ -34,19 +34,19 @@ function App() {
       <Routes>
         <>
           <Route
-            path="/roshdstar/login-admin"
+            path="/login-admin"
             element={<LoginAdmin setToken={setToken} />}
           />
 
           {/* مسیرهای مرتبط با صفحه مدیریت */}
           <Route
-            path="/roshdstar/admin-panel"
+            path="/admin-panel"
             element={
               token ? (
                 <AdminPanel2 />
               ) : (
                 // اگر توکن JWT نامعتبر باشد یا وجود نداشته باشد، به صفحه ورود هدایت می‌شویم
-                <Navigate to="/roshdstar/login-admin" />
+                <Navigate to="/login-admin" />
               )
             }
           >
@@ -57,18 +57,18 @@ function App() {
             <Route path="information" element={<Information />} />
           </Route>
           {/* سایر مسیرها */}
-          <Route path="/roshdstar/" element={<Step1 />} />
+          <Route path="/" element={<Step1 />} />
           <Route path="/step2" element={<Step2 />} />
           <Route path="/step3" element={<Step3 />} />
-          <Route path="/roshdstar/tashakor-digital" element={<TashakorDigital />} />
+          <Route path="/tashakor-digital" element={<TashakorDigital />} />
           <Route
-            path="/roshdstar/step4"
+            path="/step4"
             element={<Step4 setIsRegistered={setIsRegistered} />}
           />
 
           {/* صفحه Step5AfterPay با دسترسی محدود */}
           <Route
-            path="/roshdstar/step5afterpay"
+            path="/step5afterpay"
             element={
               isRegistered ? <Step5AfterPay /> : <Navigate to="/step4" />
             }
@@ -76,7 +76,7 @@ function App() {
 
           {/* صفحه Step6AfterPay با دسترسی محدود */}
           <Route
-            path="/roshdstar/step6afterpay"
+            path="/step6afterpay"
             element={
               isRegistered ? <Step6AfterPay /> : <Navigate to="/step4" />
             }
@@ -84,14 +84,14 @@ function App() {
 
           {/* صفحه Congratulations با دسترسی محدود */}
           <Route
-            path="/roshdstar/greeting/landing"
+            path="/greeting/landing"
             element={
               isRegistered ? <Congratulations /> : <Navigate to="/step4" />
             }
           />
           {/* صفحه Congratulations با دسترسی محدود */}
           <Route
-            path="/roshdstar/greeting/Learn"
+            path="/greeting/Learn"
             element={
               isRegistered ? <Congratulations2 /> : <Navigate to="/step4" />
             }
