@@ -2,12 +2,6 @@ import axios from "axios";
 import { useEffect } from "react";
 import { MdOutlineExitToApp } from "react-icons/md";
 import {Routes, Route, useNavigate, Link, NavLink, Outlet} from "react-router-dom";
-import DashBorad from "../components/DashBorad";
-import NavbarRight from "../components/NavbarRight";
-import Products from "../components/Products";
-import Movies from "../components/Movies";
-import Information from "../components/Information";
-// import DropDown from "../components/Dropdown";
 
 const AdminPanel2 = () => {
   const navigate = useNavigate()
@@ -23,11 +17,11 @@ const AdminPanel2 = () => {
       })
       console.log('this is the response', response)
       if (!response.data.isAdmin) {
-        navigate('/roshdstar/login-admin'); 
+        navigate('/login-admin'); 
       }
         } catch (error) {
           console.error('Error checking admin status:', error)
-          navigate('/roshdstar/login-admin');
+          navigate('/login-admin');
         }
       }
     requireAuth()
@@ -87,11 +81,3 @@ const AdminPanel2 = () => {
 };
 
 export default AdminPanel2;
-
-      // <Routes>
-      //   <Route path="dashborad" element={<DashBorad />}/>
-      //   <Route path="products" element={<Products />} />
-      //   {/* <Route path="/products" element={<Products />}/> */}
-      //   <Route path="movies" element={<Movies />}/>
-      //   <Route path="information" element={<Information />}/>
-      // </Routes>

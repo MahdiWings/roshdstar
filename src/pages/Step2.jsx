@@ -134,7 +134,7 @@ const Step2 = () => {
               {/* Button */}
               <div className="flex  justify-center">
                 <button
-                  onClick={() => navigate("/roshdstar/step3")}
+                  onClick={() => navigate("/step3")}
                   className="bg-[#E14938] rounded-e-[40px] mt-10 mb-4 px-3 py-4 relative z-10"
                 >
                   <p className="text-white font-bold text-md md:text-3xl">

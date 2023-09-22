@@ -6,11 +6,11 @@ import { MyContextProvider } from "./components/MyContext";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <HashRouter>
     <MyContextProvider>
       <App />
     </MyContextProvider>
     </HashRouter>
-  </React.StrictMode>
+  // {/* </React.StrictMode> */}
 );

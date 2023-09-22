@@ -73,7 +73,7 @@ export default function Modal() {
       );
       console.log(response.data);
       // موفقیت: ایمیل با موفقیت ارسال شده است
-      navigate("roshdstar/step2");
+      navigate("/step2");
     } catch (error) {
       console.log(error.response.data);
       alert("عملیات ناموفق، دوباره امتحان کنید", error);

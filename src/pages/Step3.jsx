@@ -174,7 +174,7 @@ const Step3 = () => {
               {/* Button */}  
               <div className="flex  justify-center">
                 <button
-                  onClick={() => navigate("/roshdstar/step4")}
+                  onClick={() => navigate("/step4")}
                   className="bg-[#E14938] rounded-e-[40px] mt-10 mb-4 px-3 py-4 relative z-10"
                 >
                   <p className="text-white font-bold text-md md:text-3xl">
@@ -191,7 +191,7 @@ const Step3 = () => {
               </div>
               <Link
                 className="underline text-blue-800 text-base text-center block pt-2"
-                to={"/roshdstar/tashakor-digital"}
+                to={"/tashakor-digital"}
               >
                 نه متشکرم اکبر شیرزادی، من فعلا فقط گزارش رایگانم رو می خوام...
               </Link>

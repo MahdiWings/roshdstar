@@ -23,7 +23,7 @@ const LoginAdmin = () => {
 
       // ذخیره توکن در localStorage یا در مکان مناسب دیگر
       localStorage.setItem("token", token);
-      window.location.href = 'https://mahdiwings.github.io/roshdstar/admin-panel';
+      window.location.href = 'https://mahdiwings.github.io/roshdstar/#/admin-panel';
       console.log("Admin Login successful");
       console.log("Token:", token);
     } catch (err) {

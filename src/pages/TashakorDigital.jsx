@@ -263,7 +263,7 @@ const TashakorDigital = () => {
                 </span>
               </div>
               <button
-                onClick={() => navigate("/roshdstar/step4")}
+                onClick={() => navigate("/step4")}
                 className="bg-gradient-to-b from-[#FFF800] to-[#FFBC00] md:w-[400px] mt-10 border-b-4 border-orange-500 py-4 px-6 rounded-full"
                 // onClick={handleNextStep}
                 type="submit"

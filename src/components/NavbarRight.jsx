@@ -24,7 +24,7 @@ const NavbarRight = () => {
         <div>
           <ul className="flex flex-col gap-8 p-2">
             <li
-              onClick={() => navigate("/roshdstar/admin-panel2")}
+              onClick={() => navigate("/admin-panel2")}
               className="text-white pl-10 pr-4 py-4 bg-blue-700 rounded-xl cursor-pointer shadow-lg "
             >
               داشبورد

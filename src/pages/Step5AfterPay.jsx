@@ -48,7 +48,7 @@ const Step5AfterPay = () => {
   useEffect(() => {
     const jwtToken = localStorage.getItem('token');
     if (!jwtToken) {
-      navigate('/roshdstar/step4')
+      navigate('/step4')
     }
     fetchProducts()
   }, []);
@@ -171,7 +171,7 @@ const Step5AfterPay = () => {
                         <img src={cartformol} alt="" />
                       </div>
                     </div>
-                    <Link to="/roshdstar/step6afterpay">
+                    <Link to="/step6afterpay">
                       <p className="text-center mb-8 -mt-10 underline text-blue-700">
                         نه متشکرم. من نیازی به کمک در ساختن کسب و کار آنلاینم
                         ندارم
