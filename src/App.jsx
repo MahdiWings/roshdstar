@@ -58,8 +58,8 @@ function App() {
           </Route>
           {/* سایر مسیرها */}
           <Route path="/roshdstar/" element={<Step1 />} />
-          <Route path="/roshdstar/step2" element={<Step2 />} />
-          <Route path="/roshdstar/step3" element={<Step3 />} />
+          <Route path="/step2" element={<Step2 />} />
+          <Route path="/step3" element={<Step3 />} />
           <Route path="/roshdstar/tashakor-digital" element={<TashakorDigital />} />
           <Route
             path="/roshdstar/step4"
