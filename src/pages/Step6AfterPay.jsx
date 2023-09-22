@@ -54,7 +54,7 @@ const Step6AfterPay = () => {
     const userEmail = localStorage.getItem('email')
     const userPassword = localStorage.getItem('password')
     try {
-      const response = await axios.post("http://roshdstar.onrender.com/api/payment", {
+      const response = await axios.post("https://roshdstar.onrender.com/api/payment", {
         email: userEmail,
         password: userPassword,
         title: firstProduct.title,
