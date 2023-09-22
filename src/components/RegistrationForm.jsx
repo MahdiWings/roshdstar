@@ -8,8 +8,9 @@ import arrowflash from "../images/arrow-flash-small.gif";
 
 const RegistrationForm = () => {
   // این useContext اومده برای اینکه بتونم اسم و ایمیل و شماره تلفن مخاطب رو در صفحه های مختلف استفاده کنم اگر نیاز داشتم و از کامپوننت MyContext اومده
-  const { name, setName, email, setEmail, phoneNumber, setPhoneNumber } = useMyContext(); 
-  const [code, setCode] = useState('');
+  const { name, setName, email, setEmail, phoneNumber, setPhoneNumber } =
+    useMyContext();
+  const [code, setCode] = useState("");
   const [iscodeValid, setIsCodeValid] = useState(false);
   // step برای مراحل فرم هست
   // step1 برای وارد شدن اطلاعات کاربر
@@ -26,17 +27,19 @@ const RegistrationForm = () => {
   const [amount, setAmount] = useState(0);
 
   const fetchProducts = async () => {
-    const apiKey = 'k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh'
+    const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://roshdstar.onrender.com/api/products", {
+        "https://roshdstar.onrender.com/api/products",
+        {
           headers: {
-            'authorization': `${apiKey}`,
-            'Content-Type': 'application/json'
-          }
-        })
+            authorization: `${apiKey}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setFirstProduct(response.data[1]);
-      setAmount(response.data[1].price)
+      setAmount(response.data[1].price);
       // console.log(response.data[1]);
       setSecondProduct(response.data[2]);
       // console.log(response.data[2]);
@@ -48,7 +51,7 @@ const RegistrationForm = () => {
   const handleSecondProductChange = () => {
     setSelectedSecondProduct(!selectedSecondProduct);
   };
-// مجموع خرید 
+  // مجموع خرید
   const calculateTotalPrice = () => {
     let total = amount;
     if (selectedSecondProduct) {
@@ -74,7 +77,7 @@ const RegistrationForm = () => {
 
   // ارسال کد
   const smsOtpcode = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!validateInput()) {
       return;
     }
@@ -90,12 +93,12 @@ const RegistrationForm = () => {
       setStep(2);
     } catch (error) {
       console.error(error);
-      alert("An error occurred while sending the code.");
+      alert("خطا در اطلاعات وارد شده.");
     }
   };
-// برای ثبت نام
+  // برای ثبت نام
   const handleSubmitcode = async (newcode) => {
-    const verifyCode = Number(newcode)
+    const verifyCode = Number(newcode);
     const responseUrl = "https://roshdstar.onrender.com/api/user/signup";
     const formData = {
       email: email,
@@ -104,12 +107,12 @@ const RegistrationForm = () => {
     };
     try {
       const response = await axios.post(responseUrl, formData);
-      console.log(response)
+      console.log(response);
       const token = response.data.token;
       setToken(token);
       localStorage.setItem("token", token);
-      localStorage.setItem('email', email)
-      localStorage.setItem('password', phoneNumber)
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", phoneNumber);
 
       setIsCodeValid(true);
       setStep(3);
@@ -121,9 +124,9 @@ const RegistrationForm = () => {
 
   useEffect(() => {
     // اگر توکن معتبری وجود داشته باشد، کاربر ثبت‌نام کرده است
-    const jwtToken = localStorage.getItem('token');
+    const jwtToken = localStorage.getItem("token");
     if (jwtToken) {
-      setStep(3)
+      setStep(3);
     }
   }, []);
 
@@ -135,15 +138,14 @@ const RegistrationForm = () => {
       handleSubmitcode(newcode);
     }
   };
-  
 
   const handleProductOrder = async (event) => {
     event.preventDefault();
-    const totalPrice = calculateTotalPrice()
-    const userEmail = localStorage.getItem('email')
-    const userPassword = localStorage.getItem('password')
+    const totalPrice = calculateTotalPrice();
+    const userEmail = localStorage.getItem("email");
+    const userPassword = localStorage.getItem("password");
     try {
-      console.log(email)
+      console.log(email);
       const response = await axios.post(
         "https://roshdstar.onrender.com/api/payment",
         {
@@ -162,8 +164,6 @@ const RegistrationForm = () => {
       console.log(error);
     }
   };
-
-  
 
   return (
     <div className="md:w-[40%] ">
@@ -262,7 +262,7 @@ const RegistrationForm = () => {
                   maxLength="4"
                   onChange={handlecodeChange}
                 />
-                {code.length === 4 ? (
+                {/* {code.length === 4 ? (
                   iscodeValid ? (
                     <p className="px-5 py-2 w-[85%] rounded text-white text-center bg-green-600">
                       رمز با موفقیت ثبت شد
@@ -272,7 +272,7 @@ const RegistrationForm = () => {
                       رمز نا معتبر است
                     </p>
                   )
-                ) : null}
+                ) : null} */}
               </div>
               <p className="text-white text-sm pt-5 mb-5 border-t-2 text-center mt-4">
                 توجه: <span className="text-yellow-300">رمز یکبار مصرف</span>{" "}
