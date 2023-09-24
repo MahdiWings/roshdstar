@@ -27,15 +27,17 @@ const Step6AfterPay = () => {
   }, []);
 
   const fetchProducts = async () => {
-    const apiKey = 'k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh'
+    const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://roshdstar.onrender.com/api/products", {
+        "https://roshdstar.onrender.com/api/products",
+        {
           headers: {
-            'authorization': `${apiKey}`,
-            'Content-Type': 'application/json'
-          }
-        })
+            authorization: `${apiKey}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setFirstProduct(response.data[3]);
     } catch (err) {
       console.error(err);
@@ -43,23 +45,26 @@ const Step6AfterPay = () => {
   };
 
   useEffect(() => {
-    const jwtToken = localStorage.getItem('token');
+    const jwtToken = localStorage.getItem("token");
     if (!jwtToken) {
-      navigate('/step4')
+      navigate("/step4");
     }
-    fetchProducts()
+    fetchProducts();
   }, []);
 
   const handleProductOrder = async () => {
-    const userEmail = localStorage.getItem('email')
-    const userPassword = localStorage.getItem('password')
+    const userEmail = localStorage.getItem("email");
+    const userPassword = localStorage.getItem("password");
     try {
-      const response = await axios.post("https://roshdstar.onrender.com/api/payment", {
-        email: userEmail,
-        password: userPassword,
-        title: firstProduct.title,
-        amount: 97000,
-      });
+      const response = await axios.post(
+        "https://roshdstar.onrender.com/api/payment",
+        {
+          email: userEmail,
+          password: userPassword,
+          title: firstProduct.title,
+          amount: 97000,
+        }
+      );
 
       console.log("Success:", response.data);
 
@@ -100,8 +105,7 @@ const Step6AfterPay = () => {
               {/* End Up video */}
               <div className="flex gap-8 flex-col md:flex-col">
                 <div className="w-full h-full md:w-[94%] mx-auto m-4 outline outline-black outline-8 ">
-                {video5 && <VideoPlayer videoSrc={video5} />}
-
+                  {video5 && <VideoPlayer videoSrc={video5} />}
                 </div>
                 {/* {video2} */}
                 {/* End video player */}
