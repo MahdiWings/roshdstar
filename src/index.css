@@ -70,6 +70,10 @@
 #videoP::-webkit-media-controls-timeline {
   display: none;
 }
+#videoP::-webkit-media-controls-current-time-display,
+#videoP::-webkit-media-controls-time-remaining-display {
+  display: none !important;
+}
 /* a {
   font-weight: 500;
   color: #646cff;
