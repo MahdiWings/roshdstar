@@ -22,23 +22,23 @@ const Step4 = () => {
     <>
       <div className=" w-[98vw] h-screen overflow-hidden">
         <div className="bg-cover w-screen h-screen bg-no-repeat fixed flex justify-center items-center bg-[#010101]"></div>
-        <div className="absolute top-0 left-0 flex-col  flex w-full h-full p-5 items-center">
-          <div className="w-full h-auto  my-5 rounded-lg outline outline-8 outline-[#ffffff0e] bg-white md:w-[80%] ">
-            <div className="p-0.5 md:p-6">
-              <div className="flex gap-8 flex-col md:flex-row-reverse">
+        <div className="absolute top-0 left-0 flex-col  flex w-full h-full items-center">
+          <div className="w-full h-auto md:w-[100%]">
+            <div className="">
+              <div className="flex gap-8 flex-col  md:flex-row-reverse m-3 lg:mx-16">
                 {/* video player */}
-                <div className="w-full h-full md:w-[60%] outline outline-black outline-8 ">
-                {video3 && <VideoPlayer videoSrc={video3}/>} 
+                <div className="w-full h-full md:w-[86%] outline outline-black outline-8 ">
+                  {video3 && <VideoPlayer videoSrc={video3} />}
                 </div>
                 {/* End video player */}
 
                 {/* Register Form */}
-                <RegistrationForm/>
+                <RegistrationForm />
                 {/* End Register Form  */}
               </div>
 
               {/* Start Main Text */}
-              <div className="mt-8 px-2 leading-8">
+              <div className="mt-8 px-5 lg:px-52 py-10  w-full bg-white leading-8">
                 <p>
                   خب بچه ها من سعی کردم کسب وکارم رو 13 سال پیش راه اندازی بکنم
                   و تو این مسیر خیلی دردسرکشیدم و خیلی بالا پایین داشتم و مهم
@@ -89,10 +89,10 @@ const Step4 = () => {
                 </p>
                 <span className="block py-3"></span>
 
-                <h3 className="text-center text-2xl md:text-3xl text-red-800 font-bold mt-8">
+                <h3 className="text-center text-2xl md:text-3xl text-[#770606] font-bold mt-8">
                   جعبه سیاه پول خودتون رو استارت بزنید و
                 </h3>
-                <h3 className="text-center text-2xl md:text-3xl text-red-800 font-bold mt-3">
+                <h3 className="text-center text-2xl md:text-3xl text-[#770606] font-bold mt-3">
                   کنترل آینده عالی خودتون رو بدست بگیرید
                 </h3>
                 <span className="block py-3"></span>

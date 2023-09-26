@@ -12,7 +12,9 @@ const Step6AfterPay = () => {
   const { name, email, password } = useMyContext();
   const [firstProduct, setFirstProduct] = useState({});
   const navigate = useNavigate();
-
+  const ProgerssBarImage = {
+    backgroundImage: `url('https://www.gardeshpool.com/root/images/jplayer.yellow.monday.gif')`,
+  };
   const [video5, setVideo5] = useState("");
 
   useEffect(() => {
@@ -62,7 +64,8 @@ const Step6AfterPay = () => {
           email: userEmail,
           password: userPassword,
           title: firstProduct.title,
-          amount: 97000,
+          amount: firstProduct.price,
+          productID: [firstProduct._id],
         }
       );
 
@@ -79,7 +82,7 @@ const Step6AfterPay = () => {
   return (
     <>
       <div className=" w-[98vw] h-screen overflow-hidden">
-        <div className="bg-cover w-screen h-screen bg-no-repeat fixed flex justify-center items-center bg-[#020202]"></div>
+        <div className="bg-cover w-screen h-screen bg-no-repeat fixed flex justify-center items-center bg-[#292929]"></div>
         <div className="absolute top-0 left-0 flex-col  flex w-full h-full items-center">
           <div className="bg-[#21557A] py-6 w-full text-center mb-5">
             <p className="text-white text-xl font-semibold">
@@ -89,10 +92,9 @@ const Step6AfterPay = () => {
           <div className="w-full h-auto  my-1 rounded-lg outline outline-8 outline-[#ffffff0e] bg-white md:w-[85%] ">
             <div className="p-0">
               {/* Up video */}
-              <div className="w-[95%] text-left my-5 mx-auto bg-gray-300 p-1 rounded">
-                <div className="w-[100%] bg-gray-100">
-                  <div className="w-[70%] bg-green-500 text-black">
-                    Completed 70%
+              <div className="w-[95%] text-left my-5 mx-auto bg-gray-300 p-1 rounded-md">
+                <div style={ProgerssBarImage} className="w-[100%]">
+                  <div className="w-[90%] bg-gray-100 text-black">
                   </div>
                 </div>
               </div>

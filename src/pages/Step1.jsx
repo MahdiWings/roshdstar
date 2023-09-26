@@ -39,22 +39,22 @@ const Step1 = () => {
 
   return (
     <div className="border-t-8 border-cyan-600">
-      <div className="flex flex-col text-right justify-center mx-auto items-center lg:w-[1080px] lg:items-start sm:flex-row">
-        <div className="p-6 w-full lg:w-2/3">
-          <h2 className="font-bold text-red-700 text-3xl">
+      <div className="flex flex-col text-right justify-center mx-auto items-center lg:w-[1100px] lg:items-start sm:flex-row">
+        <div className="pt-2 pb-6 px-6 w-full lg:w-[80%]">
+          <h2 className="font-bold text-red-700 text-xl">
             <span className="underline">رایگان</span> رونمایی کتاب
           </h2>
           <p className="text-gray-700">
             هیچ کارت بانکی نیاز نیست. دانلود رایگان
           </p>
-          <p className="text-2xl lg:text-3xl mt-3 font-bold py-4">
-            101راز روزانه ای که تبدیل میکنه
+          <p className="text-2xl lg:text-3xl mt-3 font-semibold py-4">
+            8 راز روزانه ای که تبدیل میکنه
           </p>
-          <p className="font-bold text-2xl lg:text-3xl  text-red-700">
-            ارتباطات را به پول
+          <p className="font-semibold text-2xl lg:text-3xl  text-red-700">
+            آرزو هارو به واقعیت
           </p>
 
-          <p className="font-medium py-5">
+          <p className="font-medium text-[17px] py-2">
             این کتاب رایگانو دانلود کنید بلافاصله و هر آرزویی را به واقعیت تبدیل
             کنید
           </p>
@@ -62,7 +62,7 @@ const Step1 = () => {
           <div className="mr-2 lg:mr-5 pl-12  my-4">
             <div className="flex items-center my-2">
               <FaCheckCircle className="text-[110.1px] lg:text-[57.2px] text-[#8ddd8b] mx-3" />
-              <p className="leading-8">
+              <p className="leading-8 text-[18px]">
                 کشف کنید{" "}
                 <span className="text-[#0a2441] underline font-bold">
                   سم شماره #1
@@ -73,7 +73,7 @@ const Step1 = () => {
 
             <div className="flex items-center  my-2">
               <FaCheckCircle className="text-[142.3px] lg:text-[79px] text-[#8ddd8b] mx-3" />
-              <p className="leading-8">
+              <p className="leading-8 text-[18px]">
                 <span className="underline font-bold text-[#0a2441]">
                   {" "}
                   ترفند و ارتباط مخفی
@@ -85,7 +85,7 @@ const Step1 = () => {
 
             <div className="flex items-center  my-2">
               <FaCheckCircle className="text-[137.5px] lg:text-[74px] text-[#8ddd8b] mx-3" />
-              <p className="leading-8">
+              <p className="leading-8 text-[18px]">
                 <span className="underline font-bold text-[#0a2441]">
                   قوانین طلایی
                 </span>
@@ -98,17 +98,19 @@ const Step1 = () => {
 
             {/* End UL List Tag Text */}
           </div>
+        <img src="https://www.arezooyemali.ir/root/css/lw/freebook/arrow.png" className="hidden lg:block lg:-mt-12 lg:mr-[70px]" alt="arrow" />
+
         </div>
 
         {/* Image Book */}
-        <div className="pb-3 w-[100%] md:w-[40%] -m-20 lg:m-12">
-          <div className="w-[370px] lg:scale-125 lg:mt-10 lg:w-[550px]">
+        <div className="pb-3 w-[100%] md:w-[30%] -m-20 lg:m-12">
+          <div className="w-[370px] lg:scale-150 lg:mt-10 lg:w-[450px]">
             <img src={imageUrl} alt={imageTitle} />
           </div>
         </div>
       </div>
       {/* Button Next Page */}
-      <div className="flex justify-center mt-5 lg:-mt-5">
+      <div className="flex justify-center mt-9 lg:-mt-14">
         <Modal />
       </div>
       {/* Button Next Page */}

@@ -30,18 +30,18 @@ const Step2 = () => {
             شما ارسال شد…
           </p>
 
-          <div className="w-full h-auto  my-5 rounded-lg outline outline-8 outline-[#ffffff0e] bg-white md:w-[72%] ">
+          <div className="w-full h-auto  my-5 rounded-lg outline outline-8 outline-[#ffffff0e] bg-white md:w-[67%] ">
             <div className="p-6">
               <div className="flex gap-8 flex-col md:flex-row">
                 {/* video player */}
-                <div className="w-full h-full md:w-[70%] outline outline-black outline-8 ">
+                <div className="w-full h-full md:w-[50%] mr-3 outline outline-black outline-8 ">
                     {video1 && <VideoPlayer videoSrc={video1}/>} 
                 </div>
                 {/* End video player */}
 
                 {/* Text  */}
                 <div className="hidden md:block md:w-1/2">
-                  <p className="text-3xl text-center font-semibold text-red-900">
+                  <p className="text-3xl text-center font-semibold text-[#770606]">
                     #1 درس یاد گرفتم، وقتی درچند صد میلیون بدهی فرو رفتم و در
                     بستر مرگ بودم…
                   </p>
@@ -91,7 +91,7 @@ const Step2 = () => {
 
                 <p>اون موقع، من دیگه چیزی برای از دست دادن نداشتم.</p>
 
-                <h3 className="text-center text-2xl text-red-700 font-bold mt-8">
+                <h3 className="text-center text-3xl text-[#770606] font-semibold mt-8">
                   18 ماه گذشت ، یه چیز فوق العاده کشف کردم…
                 </h3>
                 <p>حس می کردم چیزی کشف کردم که مثل یه رازه…</p>
@@ -113,19 +113,19 @@ const Step2 = () => {
                 </p>
                 <span className="block py-3"></span>
                 <p>بنابراین چه اتفاقی افتاد؟</p>
-                <h3 className="text-center text-2xl text-red-700 font-bold mt-8">
+                <h3 className="text-center text-3xl text-[#770606] font-semibold mt-8">
                   سال 1394، همه چیز به سمت نابودی پیش رفت…
                 </h3>
                 <p>تقریبا با یک چشم به هم زدن…</p>
                 <span className="block py-3"></span>
                 <p>
                   من خودمو تو <span className="underline">کلی بدهی دیدم</span>,
-                  پر از استرس, مریض و تو بستر مرگ…
+                  پر از استرس, مریض و <span className="font-semibold">تو بستر مرگ</span>…
                 </p>
                 <span className="block py-3"></span>
                 <p>
                   اون موقع بود که{" "}
-                  <span className="underline">
+                  <span className="underline font-semibold">
                     یکی از بزرگترین درس ها رو درک کردم
                   </span>{" "}
                   که تا اون موقع از زندگی ام یاد نگرفته بودم…
@@ -135,17 +135,17 @@ const Step2 = () => {
               <div className="flex  justify-center">
                 <button
                   onClick={() => navigate("/step3")}
-                  className="bg-[#E14938] rounded-e-[40px] mt-10 mb-4 px-3 py-4 relative z-10"
+                  className="bg-[#E14938] shadow-sm shadow-black rounded-e-[40px] mt-10 mb-4 px-6 py-5 relative z-10"
                 >
                   <p className="text-white font-bold text-md md:text-3xl">
                     #1 درسی که یادگرفتم{" "}
                   </p>
                   <p className="text-yellow-300 text-[10px] md:text-xl">
-                    (اینجارو کلیک کن تا به صفحه بعد بروید.)
+                    (اینجارا کلیک کن تا به صفحه بعد بروید)
                   </p>
                   <img
                     src={arrow}
-                    className="w-11 absolute -right-10 -top-1.5 md:-top-2 md:-right-14 md:w-[58px]"
+                    className="w-11 absolute -right-10 -top-1.5 md:-top-2 md:-right-14 md:w-[63px]"
                   />
                 </button>
               </div>

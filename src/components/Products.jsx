@@ -6,11 +6,13 @@ const Products = () => {
   const [product2, setProduct2] = useState({});
   const [product3, setProduct3] = useState({});
   const [product4, setProduct4] = useState({});
+  const [product5, setProduct5] = useState({});
   const [token, setToken] = useState("");
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
   const [isOpen4, setIsOpen4] = useState(false);
+  const [isOpen5, setIsOpen5] = useState(false);
 
   const fetchProducts = async () => {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
@@ -28,6 +30,7 @@ const Products = () => {
       setProduct2(response.data[1]);
       setProduct3(response.data[2]);
       setProduct4(response.data[3]);
+      setProduct5(response.data[4]);
     } catch (err) {
       console.error(err);
     }
@@ -54,6 +57,10 @@ const Products = () => {
 
   const toggleDropDown4 = () => {
     setIsOpen4(!isOpen4);
+  };
+
+  const toggleDropDown5 = () => {
+    setIsOpen4(!isOpen5);
   };
 
   const updateProduct = (product) => {
@@ -452,6 +459,89 @@ const Products = () => {
                     ))}
                     <button
                       onClick={() => updateProduct(product4)}
+                      className="bg-green-500 px-6 py-2 rounded-lg text-center mt-3 text-white"
+                    >
+                      ذخیره
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              <div className="mx-2 my-2 w-full ">
+                <label className="font-semibold">محصول تخفیفی :</label>
+                <div
+                  onClick={toggleDropDown5}
+                  className="cursor-pointer py-4 border bg-[#1E40AF] mt-3 text-white font-bold border-gray-400 p-2 rounded-lg"
+                >
+                  برای تغییرات اینجا کلیک کنید{" "}
+                </div>
+                {isOpen5 && (
+                  <div className="mt-2 bg-[#ddeaff] p-2 rounded-lg">
+                    <div className="flex items-center justify-between lg:pl-8 mt-2">
+                      <label className="lg:text-base font-semibold pl-2">
+                        نام محصول:
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="نام مورد نظر را وارد کنید"
+                        value={product5.title}
+                        onChange={(e) =>
+                          setProduct5({ ...product5, title: e.target.value })
+                        }
+                        className="border w-[87%] placeholder:text-sm  placeholder:text-right border-gray-200 text-left  p-2 rounded-lg"
+                      />
+                    </div>
+
+                    <div className="flex items-center justify-between lg:ml-8 mt-2">
+                      <label className="text-sm pl-2">قیمت محصول:</label>
+                      <input
+                        type="text"
+                        value={product5.price}
+                        onChange={(e) =>
+                          setProduct5({ ...product5, price: e.target.value })
+                        }
+                        placeholder="قیمت مورد نظر خود را وارد کنید"
+                        className="border w-[87%] placeholder:text-sm  placeholder:text-right border-gray-200 text-left  p-2 rounded-lg"
+                      />
+                    </div>
+                    {product5.audio.map((audio, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between lg:ml-8 mt-2"
+                      >
+                        <label className="text-sm pl-2">{`فیلم ${
+                          index + 1
+                        }:`}</label>
+                        <input
+                          type="text"
+                          value={audio.audioUrl}
+                          onChange={(e) =>
+                            setProduct5((prevState) => {
+                              const updatedAudio = [...prevState.audio];
+                              updatedAudio[index].audioUrl = e.target.value;
+                              return { ...prevState, audio: updatedAudio };
+                            })
+                          }
+                          placeholder="Url مورد نظر خود را وارد کنید"
+                          className="border w-[52%] placeholder:text-sm  placeholder:text-right border-gray-200 text-left  p-2 rounded-lg"
+                        />
+                        <input
+                          type="text"
+                          value={audio.audioName}
+                          onChange={(e) =>
+                            setProduct5((prevState) => {
+                              const updatedAudio = [...prevState.audio];
+                              updatedAudio[index].audioName = e.target.value;
+                              return { ...prevState, audio: updatedAudio };
+                            })
+                          }
+                          placeholder={`نام فیلم ${index + 1}`}
+                          className="border w-[40%] placeholder:text-sm  placeholder:text-right border-gray-200 text-right  p-2 rounded-lg"
+                        />
+                      </div>
+                    ))}
+                    <button
+                      onClick={() => updateProduct(product5)}
                       className="bg-green-500 px-6 py-2 rounded-lg text-center mt-3 text-white"
                     >
                       ذخیره

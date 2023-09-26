@@ -7,7 +7,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useMyContext } from "../components/MyContext";
 
-
 const Step5AfterPay = () => {
   const { email, password } = useMyContext();
 
@@ -15,6 +14,9 @@ const Step5AfterPay = () => {
   const [firstProduct, setFirstProduct] = useState({});
   document.title = "سفارش شما هنوز کامل نشده است...";
 
+  const ProgerssBarImage = {
+    backgroundImage: `url('https://www.gardeshpool.com/root/images/jplayer.blue.monday.seeking.gif')`,
+  };
   const [video4, setVideo4] = useState("");
 
   useEffect(() => {
@@ -30,15 +32,17 @@ const Step5AfterPay = () => {
   const navigate = useNavigate();
 
   const fetchProducts = async () => {
-    const apiKey = 'k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh'
+    const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://roshdstar.onrender.com/api/products", {
+        "https://roshdstar.onrender.com/api/products",
+        {
           headers: {
-            'authorization': `${apiKey}`,
-            'Content-Type': 'application/json'
-          }
-        })
+            authorization: `${apiKey}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setFirstProduct(response.data[3]);
     } catch (err) {
       console.error(err);
@@ -46,25 +50,29 @@ const Step5AfterPay = () => {
   };
 
   useEffect(() => {
-    const jwtToken = localStorage.getItem('token');
+    const jwtToken = localStorage.getItem("token");
     if (!jwtToken) {
-      navigate('/step4')
+      navigate("/step4");
     }
-    fetchProducts()
+    fetchProducts();
   }, []);
 
   const totalPrice = firstProduct.price;
 
   const handleProductOrder = async () => {
-    const userEmail = localStorage.getItem('email')
-    const userPassword = localStorage.getItem('password')
+    const userEmail = localStorage.getItem("email");
+    const userPassword = localStorage.getItem("password");
     try {
-      const response = await axios.post("https://roshdstar.onrender.com/api/payment", {
-        email: userEmail,
-        password: userPassword,
-        title: firstProduct.title,
-        amount: totalPrice,
-      });
+      const response = await axios.post(
+        "https://roshdstar.onrender.com/api/payment",
+        {
+          email: userEmail,
+          password: userPassword,
+          title: firstProduct.title,
+          amount: totalPrice,
+          productID: [firstProduct._id],
+        }
+      );
       console.log("Success:", response.data);
 
       // دریافت لینک درگاه پرداخت از بک‌اند
@@ -91,7 +99,7 @@ const Step5AfterPay = () => {
   return (
     <>
       <div className=" w-[98vw] h-screen overflow-hidden">
-        <div className="bg-cover bg-[#010101] w-screen h-screen bg-no-repeat fixed flex justify-center items-center"></div>
+        <div className="bg-cover bg-[#292929] w-screen h-screen bg-no-repeat fixed flex justify-center items-center"></div>
 
         <div className="absolute top-0 left-0 flex-col  flex w-full h-full p-5 items-center">
           <p className="text-white pt-2 pb-5 text-xl">
@@ -101,10 +109,9 @@ const Step5AfterPay = () => {
           <div className="w-full h-auto  my-1 rounded-lg outline outline-8 outline-[#ffffff0e] bg-white md:w-[85%] ">
             <div className="p-0">
               {/* Up video */}
-              <div className="w-[95%] text-left my-5 mx-auto bg-gray-300 p-1 rounded">
-                <div className="w-[100%] bg-gray-100">
-                  <div className="w-[60%] bg-green-500 text-black">
-                    Completed 60%
+              <div className="w-[98%] text-left my-1 mx-auto bg-gray-300 p-1 rounded-md">
+                <div style={ProgerssBarImage} className="w-[100%]">
+                  <div className="w-[75%] bg-gray-100 text-black">
                   </div>
                 </div>
               </div>

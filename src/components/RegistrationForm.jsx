@@ -153,6 +153,9 @@ const RegistrationForm = () => {
           password: userPassword,
           title: firstProduct.title,
           amount: totalPrice,
+          productID: selectedSecondProduct
+            ? [firstProduct._id, secondProduct._id]
+            : [firstProduct._id],
         }
       );
       console.log(response.data);
@@ -168,48 +171,56 @@ const RegistrationForm = () => {
   return (
     <div className="md:w-[40%] ">
       <div className="w-[100%] lg:w-[100%] rounded-lg bg-[#004D81] flex justify-center items-center">
-        <div className="flex px-3 justify-center flex-col">
+        <div className="flex justify-center flex-col">
           <div className="py-4 pb-1 mb-1">
-            <p className="text-white font-semibold text-center text-base lg:text-base">
-              برای <span className="text-yellow-300">دانلود مستقیم</span> فقط
-              فرم زیر را پر کنید
+            <p className="text-white pb-3 font-semibold text-center text-base lg:text-lg">
+              برای{" "}
+              <span className="text-yellow-300 underline">دانلود مستقیم</span>{" "}
+              فقط فرم زیر را پر کنید
             </p>
           </div>
-          <div className="flex w-full bg-[#2969B0] mb-4 rounded-xl">
+          <div className="flex w-full pt-1.5 px-2 bg-[#2969B0] mb-8 rounded-t-xl">
             {/* Second Step */}
             <div
-              className={`relative w-1/2 text-sm p-2 ${
+              className={`relative w-1/2 rounded-t-xl text-sm p-2 px-5 ${
                 step === 1 ? "text-yellow-300" : "text-white bg-[#004D81]"
               }`}
             >
-              <p className="text-xs">مشاهده فاکتور</p>
-              <span className="text-3xl absolute top-3 left-2 md:left-3 ">
+              <p className="text-xl">مشاهده فاکتور</p>
+              <span className="text-3xl font-semibold text-yellow-300 absolute top-3 left-2 md:left-3 ">
                 2
               </span>
-              <p className="text-[10px] md:text-xs">نهایی کردن خرید</p>
+              <p className="text-[10px] text-yellow-300 md:text-xs">
+                نهایی کردن خرید
+              </p>
             </div>
             {/* End Second Step */}
 
             {/* First Step */}
             <div
-              className={`relative w-1/2 text-sm p-2 z-30 ${
+              className={`relative w-1/2 rounded-t-xl text-sm p-2 px-5 z-30 ${
                 step === 1 ? "text-white bg-[#004D81]" : "text-yellow-300"
               }`}
             >
-              <p className="text-xs md:text-sm">ثبت نام</p>
-              <span className="text-3xl absolute top-3 left-2 md:left-2 ">
+              <p className="text-xs md:text-xl">ثبت نام</p>
+              <span className="text-3xl font-semibold text-yellow-300 absolute top-3 left-2 md:left-2 ">
                 1
               </span>
-              <p className="text-[10px] md:text-xs">دسترسی به پنل کاربری</p>
+              <p className="text-[10px] text-yellow-300 md:text-xs">
+                دسترسی به پنل کاربری
+              </p>
             </div>
             {/* End First Step */}
           </div>
           {step === 1 && (
-            <form onSubmit={smsOtpcode} className="flex flex-col items-center">
+            <form
+              onSubmit={smsOtpcode}
+              className="flex flex-col mx-4 items-center"
+            >
               <input
                 type="text"
-                placeholder="*نام"
-                className="block mx-2 w-full placeholder:text-gray-600 mb-2 p-2 border rounded"
+                placeholder="*نام و نام خانوادگی"
+                className="block bg-[#2969B0] text-white mx-2 w-full placeholder:text-white mb-2 p-2  rounded"
                 value={name}
                 required
                 onChange={(e) => setName(e.target.value)}
@@ -217,26 +228,29 @@ const RegistrationForm = () => {
               <input
                 type="email"
                 placeholder="*ایمیل"
-                className="block mx-2 w-full placeholder:text-gray-600 mb-2 p-2 border rounded"
+                className="block bg-[#2969B0] text-white mx-2 w-full placeholder:text-white mb-2 p-2  rounded"
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type="tel"
-                placeholder="*شماره تلفن"
-                className="block mx-2 w-full placeholder:text-gray-600 mb-2 p-2 border rounded"
+                placeholder="*موبایل"
+                className="block bg-[#2969B0] text-white mx-2 w-full placeholder:text-white mb-2 p-2  rounded"
                 required
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
 
               <button
-                className="bg-yellow-500 text-3xl w-full my-4 text-white py-3 px-6 rounded-full"
+                className="bg-gradient-to-b from-[#FFF800]  to-[#FFBC00] shadow-md shadow-[#2e2e2e] text-3xl w-full my-4 font-semibold text-black py-3 px-6 border-b-4 border-orange-500 rounded-full"
                 // onClick={smsOtpcode}
                 type="submit"
               >
-                برو به مرحله 2{" "}
+                <span style={{ textShadow: ` 2px 2px #fff` }}>
+                  {" "}
+                  برو به مرحله 2
+                </span>
               </button>
               <p className="text-xs flex text-center mb-3 text-gray-200">
                 <span className="">
@@ -274,7 +288,8 @@ const RegistrationForm = () => {
                   )
                 ) : null} */}
               </div>
-              <p className="text-white text-sm pt-5 mb-5 border-t-2 text-center mt-4">
+              <div className="w-[88%] mx-auto mt-4 h-[1px] bg-white"></div>
+              <p className="text-white text-sm px-5 mb-5 text-center mt-4">
                 توجه: <span className="text-yellow-300">رمز یکبار مصرف</span>{" "}
                 برای شماره تلفن شما از طریق پیامک ارسال شد.
               </p>
@@ -285,29 +300,29 @@ const RegistrationForm = () => {
           {step === 3 && (
             <div>
               <form>
-                <div className="text-white flex justify-between mx-3 text-sm">
+                <div className="text-white flex font-semibold justify-between mx-6 mb-3 text-sm">
                   <p>قیمت(تومان)</p>
                   <p>سفارش</p>
                 </div>
-                <div className="w-full h-[1.5px] mt-1 bg-white"></div>
-                <div className="my-1 text-white text-sm leading-8">
+                <div className="w-[88%] mx-auto h-[1.5px] mt-1 bg-white"></div>
+                <div className="my-1 text-white text-sm mx-6 leading-8">
                   <p>{firstProduct.title}</p>
                   <p>{firstProduct.price} تومان</p>
                 </div>
-                <div className="w-full h-[1px] bg-white"></div>
+                <div className="w-[88%] mx-auto h-[1px] bg-white"></div>
 
                 {/* Render second product only if selected */}
                 {selectedSecondProduct && (
                   <>
-                    <div className="my-1 text-white text-sm leading-8">
+                    <div className="my-1 text-white text-sm mx-6 leading-8">
                       <p>{secondProduct.title}</p>
                       <p>{secondProduct.price} تومان</p>
                     </div>
-                    <div className="w-full h-[1px] bg-white"></div>
+                    <div className="w-[88%] mx-auto h-[1px] bg-white"></div>
                   </>
                 )}
-                <div className="w-full rounded-sm bg-white mt-6 mb-3 border-[3px] p-3 border-black  border-dashed h-auto">
-                  <div className="flex justify-around text-white bg-black py-2 px-2">
+                <div className="w-[88%] mx-auto rounded-sm bg-white mt-6 mb-3 border-[3px] p-3 border-black  border-dashed h-auto">
+                  <div className="flex justify-around text-white bg-black py-2 px-2 lg:px-5">
                     <p className="text-sm font-bold">
                       بله من این را می خواهم داشته باشم
                     </p>
@@ -333,9 +348,9 @@ const RegistrationForm = () => {
                     امروز برای شما 67 هزار تومان
                   </p>
                 </div>
-                <div className="text-center my-3">
+                <div className="text-center mx-7 my-5">
                   <button
-                    className="bg-[#32d409] flex flex-row justify-center items-center  w-[100%]  text-white h-[55px] rounded-full "
+                    className="bg-[#30D425] flex flex-row justify-center items-center w-[100%]  text-white h-[70px] rounded-full "
                     onClick={handleProductOrder}
                   >
                     <p className="text-2xl font-bold">ثبت سفارش</p>
@@ -344,8 +359,8 @@ const RegistrationForm = () => {
                     </span>
                   </button>
                 </div>
-                <p className="text-xs flex text-center mb-3 text-gray-200">
-                  <span className="">
+                <p className="text-xs px-6 pb-4 flex text-center mb-3 text-gray-200">
+                  <span>
                     <IoMdLock />
                   </span>
                   ما به امنیت اطلاعات شما احترام می گذاریم و اطلاعات شما 100%

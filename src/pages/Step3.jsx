@@ -24,12 +24,12 @@ const Step3 = () => {
       <div className=" w-[98vw] h-screen overflow-hidden">
         <div className="bg-[#010101] bg-cover w-screen h-screen bg-no-repeat fixed flex justify-center items-center"></div>
         <div className="absolute top-0 left-0 flex-col  flex w-full h-full p-5 items-center">
-          <div className="w-full h-auto  my-5 rounded-lg outline outline-8 outline-[#ffffff0e] bg-white md:w-[72%] ">
+          <div className="w-full h-auto  my-5 rounded-lg outline outline-8 outline-[#ffffff0e] bg-white md:w-[67%] ">
             <div className="p-6">
               <div className="flex gap-8 flex-col md:flex-row-reverse">
                 {/* Text  */}
                 <div className=" md:w-1/2">
-                  <p className="text-3xl p-3 text-center font-bold text-red-900">
+                  <p className="text-3xl p-3 text-center font-bold text-[#770606]">
                     تنها 1 کلمه که زندگی منو تغییر داد…
                   </p>
                   <p>یادم میاد که لم داده بودم و فکر می کردم:</p>
@@ -42,7 +42,7 @@ const Step3 = () => {
                 {/* Text  */}
 
                 {/* video player */}
-                <div className="w-full h-full md:w-[70%] outline outline-black outline-8 ">
+                <div className="w-full h-full md:w-[50%] md:mr-3 outline outline-black outline-8 ">
                   {video2 && <VideoPlayer videoSrc={video2} />}
                 </div>
                 {/* End video player */}
@@ -87,10 +87,10 @@ const Step3 = () => {
                   کاملا روشم رو تغییر بدم . تا امروز نفهمیدم که چرا؟
                 </p>
 
-                <h3 className="text-center text-2xl md:text-3xl text-red-800 font-bold mt-8">
+                <h3 className="text-center text-2xl md:text-3xl text-[#770606] font-bold mt-8">
                   ببینید، چیزی که من کشف کردم
                 </h3>
-                <h3 className="text-center text-2xl md:text-3xl text-red-800 font-bold mt-3">
+                <h3 className="text-center text-2xl md:text-3xl text-[#770606] font-bold mt-3">
                   تو اون 3 سال <span className="underline">یک سیستم بود</span>…
                 </h3>
                 <span className="block py-2"></span>
@@ -111,10 +111,10 @@ const Step3 = () => {
                 <span className="block py-0"></span>
                 <p>از مسیرم منحرف شده بودم و ناگهان زندگیم از هم پاشید...</p>
                 <span className="block py-3"></span>
-                <h3 className="text-center text-2xl md:text-3xl text-red-800 font-bold mt-4">
+                <h3 className="text-center text-2xl md:text-3xl text-[#770606] font-bold mt-4">
                   اینجا چه اتفاقی افتاد وقتی من
                 </h3>
-                <h3 className="text-center text-2xl md:text-3xl text-red-800 font-bold mt-3">
+                <h3 className="text-center text-2xl md:text-3xl text-[#770606] font-bold mt-3">
                   برگشتم به…<span className="underline">سیستم</span> …
                 </h3>
                 <span className="block py-2"></span>
@@ -175,17 +175,17 @@ const Step3 = () => {
               <div className="flex  justify-center">
                 <button
                   onClick={() => navigate("/step4")}
-                  className="bg-[#E14938] rounded-e-[40px] mt-10 mb-4 px-3 py-4 relative z-10"
+                  className="bg-[#E14938] rounded-e-[40px] shadow-sm shadow-black mt-10 mb-4 lg:px-10 px-4 py-5 relative z-10"
                 >
                   <p className="text-white font-bold text-md md:text-3xl">
                     بله! کتاب دیجیتالمو بهم بده!{" "}
                   </p>
-                  <p className="text-yellow-300 text-[10px] md:text-xl">
-                    اینجارو کلیک کن تا به صفحه بعد بری
+                  <p className="text-yellow-300 font-semibold text-[10px] md:text-xl">
+                    اینجارو کلیک کن تا به صفحه بعد بری<span className="font-serif">«</span>
                   </p>
                   <img
                     src="https://www.arezooyemali.ir/root/css/lw/system/arrow2.png"
-                    className="w-11 absolute -right-10 -top-1.5 md:-top-2 md:-right-14 md:w-[58px]"
+                    className="w-11 absolute -right-10 -top-1.5 md:-top-2 md:-right-14 md:w-[64px]"
                   />
                 </button>
               </div>

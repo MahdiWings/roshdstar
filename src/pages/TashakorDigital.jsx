@@ -118,7 +118,7 @@ const TashakorDigital = () => {
         >
           <div className="flex items-center flex-col pt-3.5 font-bold text-white text-2xl">
             <h2 className="text-yellow-200">تبریک!!</h2>
-            <p> کتاب رایگان منو در زیر دانلود کنید</p>
+            <p> مینی کتاب رایگان منو در زیر دانلود کنید!</p>
           </div>
         </div>
       </div>
@@ -132,32 +132,30 @@ const TashakorDigital = () => {
           )}
         </div>
         {/* first Box Section */}
-        <div className="text-center border rounded-lg border-black mx-3 my-8">
+        <div className="text-center border rounded-lg border-black mx-5 my-8">
           <div className="bg-[#3E91A7] rounded-t-[7px] py-4 text-2xl font-bold text-white">
-            <h2>کتابم را رایگان دانلود کنید !</h2>
+            <h2>8 راز برای به حقیقت رسوندن آرزوهای مالیتون!</h2>
           </div>
           <div className="p-1 pb-9 rounded-lg" style={ConBgImage}>
             <div>
               <div className="flex flex-col-reverse text-right justify-center mx-auto items-center lg:w-[100%] lg:items-start sm:flex-row">
                 <div className="p-2 w-full lg:w-[90%]">
                   <h2 className="font-bold text-black-700 mb-1 text-[28px]">
-                    بخونید این مینی کتاب رو ۱۰۰ درصد رایگان
+                    بخونید این مینی کتاب رو ۱۰۰ درصد{" "}
+                    <span className="underline">رایگان</span>
                   </h2>
-                  <span className="bg-yellow-500 px-4 py-0.5 text-2xl font-bold text-red-600">
+                  <span className="bg-yellow-400 px-4 py-0.5 text-2xl font-bold text-red-600">
                     آفر به مدت محدود
                   </span>
-                  <p className="font-semibold text-xl pt-3">
-                    بعد از آموزش بیشتر از ۳ میلیون آدم در اطراف دنیا...
-                  </p>
                   <p className="font-medium text-lg pt-3">
-                    اینا ۵ راز برای به حقیقت رسوندن آرزوهای مالیتون هستن
+                    اینا 8 راز برای به حقیقت رسوندن آرزوهای مالیتون هستن
                   </p>
                   {/* UL List Tag Text */}
                   <div className="my-4">
                     <div className="flex items-center my-2">
                       <FaCheckCircle className="text-[50.1px] lg:text-[32.2px] text-[#0d8f73] mx-3" />
                       <p className="text-[15px] text-gray-900 font-semibold">
-                        ۵ راز منو که بهتون اون پرش شروع به سمت آینده مالی که
+                        8 راز منو که بهتون اون پرش شروع به سمت آینده مالی که
                         منتظرش بودید میده رو کشف کنید
                       </p>
                     </div>
@@ -173,7 +171,7 @@ const TashakorDigital = () => {
                     <div className="flex items-center  my-2">
                       <FaCheckCircle className="text-[52.5px] lg:text-[34px] text-[#0d8f73] mx-3" />
                       <p className="text-[15px] text-gray-900 font-semibold">
-                        ۵ رازی که میتونید اجراشو در زندگیتون امروز شروع کنید تا
+                        8 رازی که میتونید اجراشو در زندگیتون امروز شروع کنید تا
                         ۱۰۰ درصد کنترل آینده مالیتون رو بگیرید
                       </p>
                     </div>
@@ -193,7 +191,15 @@ const TashakorDigital = () => {
               <div className="bg-[#3E91A7] w-[99%] md:w-[90%] p-3 mx-auto shadow-lg shadow-gray-500 rounded-lg text-xl font-bold text-white">
                 <div style={transpatternImage} className="rounded-lg">
                   <div className="p-5">
-                    <p>دانلود مینی کتاب رایگان من !</p>
+                    <div className="flex items-center gap-1.5 lg:gap-4">
+                      <img
+                        src="https://www.arezooyemali.ir/root/css/lw/downloadminibook/option1.png"
+                        alt="pdf"
+                      />
+                      <p className="pb-4 text-[16px] lg:text-[24px] font-semibold">
+                        دانلود مینی کتاب رایگان من !
+                      </p>
+                    </div>
                     <div className="py-3 md:py-6 border-4 border-yellow-300 border-dashed block mx-auto mt-5 w-60 text-3xl bg-[#195161] text-yellow-400">
                       100% رایگان
                     </div>
@@ -209,7 +215,7 @@ const TashakorDigital = () => {
                       <p className="text-blue-950 text-2xl md:text-3xl">
                         دانلود رایگان
                       </p>{" "}
-                      <p className="text-sm md:text-lg font-medium text-red-600">
+                      <p className="text-sm md:text-lg font-semibold text-red-700">
                         اینجا کلیک کنید برای ذخیره
                       </p>{" "}
                     </button>
@@ -219,9 +225,10 @@ const TashakorDigital = () => {
             </div>
           </div>
         </div>
-        <div className="text-center border rounded-lg border-orange-500 mx-3 my-8">
-          <div className="bg-[#f86d1d] rounded-t-[7px] py-4 text-2xl font-semibold px-2 leading-10 text-white">
-            <p>صبر کن – این پیام ویژه از اکبر شیرزادی را ببینید</p>
+        <div className="text-center border rounded-lg border-orange-500 mx-5 my-8">
+          <div className="bg-gradient-to-b from-[#F27833] to-[#DA570C] rounded-t-[7px] py-2  font-semibold px-2 leading-10 text-white">
+            <p className="text-[26px]">صبر کن – این پیام ویژه از اکبر شیرزادی را ببینید</p>
+            <p className="text-[21px] text-yellow-300">معرفی برترین کتاب های 1402 شو بگیرید– رایگان</p>
           </div>
           <div className="p-1 pb-9 rounded-lg" style={ConBgImage}>
             <div>
@@ -246,25 +253,23 @@ const TashakorDigital = () => {
                   {/* {imageUrl} */}
                 </div>
               </div>
-              <div className="bg-[#faffb5] w-[99%] md:w-[85%] border-dashed border-[#f36100] border-4 p-3 shadow-lg mx-auto shadow-gray-500 rounded-lg text-xl font-bold text-white text-right">
+              <div className="bg-[#FFFFCC] w-[99%] md:w-[85%] border-dashed border-[#f36100] border-4 p-3 shadow-lg mx-auto shadow-gray-500 rounded-lg text-xl font-bold text-white text-right">
                 <span className="flex items-center pt-3 gap-4 text-gray-900 font-semibold text-lg">
                   <FaCheck className="text-green-600 text-[24px]" />
-                  وارد بازار چند 10 میلیاردی شو فقط با کامپیوترت
+                  وارد بازار چند 10 میلیاردی شو فقط با مهارتت
                 </span>
                 <span className="flex items-center pt-3 gap-4 text-gray-900 font-semibold text-lg">
                   <FaCheck className="text-green-600 text-[53px] md:text-[32px]" />
-                  یاد بگیر چجوری بیزنستو بر اساس بازاریابی اطلاعات آنلاین استارت
-                  بزنی قدم های دقیق برای دنبال کردن
+                  یاد بگیر چجوری بیزنستو بر اساس بازاریابی آنلاین و سنتی قدم به قدم استارت بزنی
                 </span>
                 <span className="flex items-center pt-3 gap-4 text-gray-900 font-semibold text-lg">
                   <FaCheck className="text-green-600 text-[45px] md:text-[27px]" />
-                  «معرفی برترین های 1401» رو 100% رایگان بگیر (فقط اطلاعاتت رو
-                  بده) – فرصت محدود!
+                  بعد از خواندن این کتاب میتونی به این مهارت خاص مسلط بشی
                 </span>
               </div>
               <button
                 onClick={() => navigate("/step4")}
-                className="bg-gradient-to-b from-[#FFF800] to-[#FFBC00] md:w-[400px] mt-10 border-b-4 border-orange-500 py-4 px-6 rounded-full"
+                className="bg-gradient-to-b from-[#FFF800] to-[#FFBC00] shadow-md shadow-[#2e2e2e] md:w-[400px] mt-10 border-b-4 border-orange-500 py-4 px-6 rounded-full"
                 // onClick={handleNextStep}
                 type="submit"
               >
