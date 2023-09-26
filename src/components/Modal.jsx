@@ -123,7 +123,7 @@ export default function Modal() {
                     </span>
                   </button>
                   <div className="w-[100%] text-left  bg-gray-300 px-10 py-2 rounded">
-                    <div className="w-[100%]">
+                    <div className="w-[100%] bg-green-400">
                       <div className="w-[48%] bg-gray-100 text-black">
                         <p className="-ml-14">Completed 50%</p>
                       </div>

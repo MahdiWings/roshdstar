@@ -40,7 +40,7 @@ const Step6AfterPay = () => {
           },
         }
       );
-      setFirstProduct(response.data[3]);
+      setFirstProduct(response.data[4]);
     } catch (err) {
       console.error(err);
     }

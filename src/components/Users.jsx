@@ -5,7 +5,7 @@ import { BiSolidMessageSquareEdit } from "react-icons/bi";
 import Modal from "react-modal";
 
 const Users = () => {
-  const [token, setToken] = useState('')
+  const [token, setToken] = useState("");
   const [users, setUsers] = useState([]);
   const [isModalEditeOpen, setIsModalEditeOpen] = useState(false); // وضعیت مدال
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -13,19 +13,21 @@ const Users = () => {
   // ویژگی‌های ایمیل و رمز عبور جهت ویرایش
   const [editEmail, setEditEmail] = useState("");
   const [editPassword, setEditPassword] = useState("");
-  const [id, setId] = useState('')
+  const [id, setId] = useState("");
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token')
-    setToken(storedToken)
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "https://roshdstar.onrender.com/api/user", {
+          "https://roshdstar.onrender.com/api/user",
+          {
             headers: {
-              authorization: `Bearer ${storedToken}`
-            }
-          });
+              authorization: `Bearer ${storedToken}`,
+            },
+          }
+        );
         console.log(response);
         setUsers(response.data);
       } catch (error) {
@@ -45,11 +47,14 @@ const Users = () => {
   const confirmDelete = () => {
     // انجام حذف کاربر از API و بستن مدال تأیید حذف
     axios
-      .delete(`https://roshdstar.onrender.com/api/user/delete/${userToDelete}`, {
-        headers: {
-          authorization: `Bearer ${token}`
+      .delete(
+        `https://roshdstar.onrender.com/api/user/delete/${userToDelete}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         }
-      })
+      )
       .then(() => {
         // بعد از حذف کاربر، لیست کاربران را به روز کنید
         const updatedUsers = users.filter(
@@ -58,8 +63,8 @@ const Users = () => {
         setUsers(updatedUsers);
       })
       .catch((error) => {
-        console.log(error.response.data)
-        console.log(userToDelete)
+        console.log(error.response.data);
+        console.log(userToDelete);
         alert("خطا در انجام عملیات حذف کاربران", error.response.data);
       })
       .finally(() => {
@@ -72,7 +77,7 @@ const Users = () => {
     // باز کردن مدال و پر کردن ویژگی‌های ایمیل و رمز عبور براساس اطلاعات کاربر
     const user = users.find((user) => user._id === _id);
     if (user) {
-      setId(user._id)
+      setId(user._id);
       setEditEmail(user.email);
       setEditPassword(user.password);
       setIsModalEditeOpen(true);
@@ -89,14 +94,18 @@ const Users = () => {
   const saveEditedUser = () => {
     // ارسال درخواست به API برای به‌روزرسانی اطلاعات کاربر
     axios
-      .patch(`https://roshdstar.onrender.com/api/user/update/${id}`, {
-        email: editEmail,
-        password: editPassword,
-      }, {
-        headers: {
-          authorization: `Bearer ${token}`
+      .patch(
+        `https://roshdstar.onrender.com/api/user/update/${id}`,
+        {
+          email: editEmail,
+          password: editPassword,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         }
-      })
+      )
       .then(() => {
         // بعد از به‌روزرسانی، مدال را ببندید و لیست کاربران را به روز کنید
         setIsModalEditeOpen(false);
@@ -107,7 +116,7 @@ const Users = () => {
         closeModal();
       })
       .catch((error) => {
-        console.log(error.response.data)
+        console.log(error.response.data);
         alert("خطا در بروزرسانی کاربر:", error.message);
       });
   };
@@ -126,14 +135,15 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {users && users.map((user, index) => (
+            {users &&
+              users.map((user, index) => (
                 <tr
                   className="flex justify-start text-center py-4 hover:bg-[#F8F9FA] pr-4 items-center"
                   key={index}
                 >
                   <td className="w-[280px]">{user.email}</td>
                   <td className="w-[32%]">{user.phoneNumber}</td>
-                  <td className="w-[15%]">{user.registrationDate}</td>
+                  <td className="w-[15%]">{user.updatedAt.slice(0, 10)}</td>
                   <td className="w-[20%]">
                     <button onClick={() => handleEdit(user._id)}>
                       <BiSolidMessageSquareEdit className="text-xl m-1 lg:text-2xl" />

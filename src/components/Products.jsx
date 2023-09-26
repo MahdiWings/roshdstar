@@ -60,7 +60,7 @@ const Products = () => {
   };
 
   const toggleDropDown5 = () => {
-    setIsOpen4(!isOpen5);
+    setIsOpen5(!isOpen5);
   };
 
   const updateProduct = (product) => {
