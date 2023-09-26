@@ -131,8 +131,8 @@ export default function Modal() {
                   </div>
                 </div>
                 {/*body*/}
-                <div className="relative py-2 flex flex-col md:flex-row px-5 flex-auto">
-                  <div className="p-2 w-80 md:w-[300px] md:scale-[1.32] md:pt-10 md:pb-11 mx-auto">
+                <div className="relative py-2 flex flex-col md:flex-row overflow-hidden px-5 flex-auto">
+                  <div className="w-80 md:w-[300px] md:scale-[1.50] md:pt-16 md:pb-14 mx-auto">
                     <img src={imageBook} alt={titleBook} />
                     {/* {imageBook} */}
                   </div>
@@ -149,13 +149,13 @@ export default function Modal() {
                     />
                     <div>
                       <button
-                        className="bg-red-600 mt-5 text-white active:bg-red-500 font-semibold w-full md:mr-[9px] md:w-[96%] text-[26px] px-6 py-4 rounded-md shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
+                        className="bg-red-600 mt-5 text-white active:bg-red-500 font-semibold w-full md:mr-[9px] md:w-[96%] text-[26px] px-6 py-4 md:py-5 rounded-md shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
                         type="button"
                         onClick={handleOnClick}
                       >
                         <span className="underline">رایگان</span> دانلود آنی{" "}
                       </button>
-                      <p className="text-left justify-end flex text-[10px] md:text-xs py-3 my-4">
+                      <p className="text-left justify-end flex text-[10px] md:text-xs pt-9">
                         <span className="text-yellow-500 text-sm">
                           <IoMdLock />
                         </span>{" "}

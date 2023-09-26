@@ -34,7 +34,7 @@ const Step2 = () => {
             <div className="p-6">
               <div className="flex gap-8 flex-col md:flex-row">
                 {/* video player */}
-                <div className="w-full h-full md:w-[50%] mr-3 outline outline-black outline-8 ">
+                <div className="w-full h-full md:w-[50%] md:mr-3 outline outline-black outline-8 ">
                   {video1 && (
                     <video
                       controls
@@ -147,7 +147,7 @@ const Step2 = () => {
               <div className="flex  justify-center">
                 <button
                   onClick={() => navigate("/step3")}
-                  className="bg-[#E14938] shadow-sm shadow-black rounded-e-[40px] mt-10 mb-4 px-6 py-5 relative z-10"
+                  className="bg-[#E14938] shadow-sm shadow-black rounded-e-[40px] mt-10 mb-4 px-6 py-4 md:py-5 relative z-10"
                 >
                   <p className="text-white font-bold text-md md:text-3xl">
                     #1 درسی که یادگرفتم{" "}

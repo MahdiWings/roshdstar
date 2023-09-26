@@ -3,6 +3,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import arrow from "../images/arrow2.png";
 
 const Step3 = () => {
   document.title = "مرحله سوم - رونمایی";
@@ -186,7 +187,7 @@ const Step3 = () => {
               <div className="flex  justify-center">
                 <button
                   onClick={() => navigate("/step4")}
-                  className="bg-[#E14938] rounded-e-[40px] shadow-sm shadow-black mt-10 mb-4 lg:px-10 px-4 py-5 relative z-10"
+                  className="bg-[#E14938] rounded-e-[40px] shadow-sm shadow-black mt-10 mb-4 lg:px-10 px-4 py-4 md:py-5 relative z-10"
                 >
                   <p className="text-white font-bold text-md md:text-3xl">
                     بله! کتاب دیجیتالمو بهم بده!{" "}
@@ -196,7 +197,7 @@ const Step3 = () => {
                     <span className="font-serif">«</span>
                   </p>
                   <img
-                    src="https://www.arezooyemali.ir/root/css/lw/system/arrow2.png"
+                    src={arrow}
                     className="w-11 absolute -right-10 -top-1.5 md:-top-2 md:-right-14 md:w-[64px]"
                   />
                 </button>
