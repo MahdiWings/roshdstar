@@ -43,7 +43,18 @@ const Step3 = () => {
 
                 {/* video player */}
                 <div className="w-full h-full md:w-[50%] md:mr-3 outline outline-black outline-8 ">
-                  {video2 && <VideoPlayer videoSrc={video2} />}
+                  {video2 && (
+                    <video
+                      controls
+                      controlsList="nodownload"
+                      disablePictureInPicture
+                      id="videoP"
+                      className="w-full"
+                    >
+                      <source src={video2} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
                 </div>
                 {/* End video player */}
               </div>
@@ -171,7 +182,7 @@ const Step3 = () => {
                   به من بدید!
                 </p>
               </div>
-              {/* Button */}  
+              {/* Button */}
               <div className="flex  justify-center">
                 <button
                   onClick={() => navigate("/step4")}
@@ -181,7 +192,8 @@ const Step3 = () => {
                     بله! کتاب دیجیتالمو بهم بده!{" "}
                   </p>
                   <p className="text-yellow-300 font-semibold text-[10px] md:text-xl">
-                    اینجارو کلیک کن تا به صفحه بعد بری<span className="font-serif">«</span>
+                    اینجارو کلیک کن تا به صفحه بعد بری
+                    <span className="font-serif">«</span>
                   </p>
                   <img
                     src="https://www.arezooyemali.ir/root/css/lw/system/arrow2.png"

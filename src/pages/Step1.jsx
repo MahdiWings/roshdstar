@@ -104,7 +104,7 @@ const Step1 = () => {
 
         {/* Image Book */}
         <div className="pb-3 w-[100%] md:w-[30%] -m-20 lg:m-12">
-          <div className="w-[370px] lg:scale-150 lg:mt-10 lg:w-[450px]">
+          <div className="w-[370px] lg:scale-[1.80] lg:mt-20 lg:w-[350px]">
             <img src={imageUrl} alt={imageTitle} />
           </div>
         </div>

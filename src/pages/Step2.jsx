@@ -9,7 +9,7 @@ const Step2 = () => {
   document.title = "مرحله دوم - رونمایی";
   const navigate = useNavigate();
   const [video1, setVideo1] = useState("");
-  
+
   useEffect(() => {
     axios
       .get("https://roshdstar.onrender.com/api/pages/1")
@@ -35,7 +35,18 @@ const Step2 = () => {
               <div className="flex gap-8 flex-col md:flex-row">
                 {/* video player */}
                 <div className="w-full h-full md:w-[50%] mr-3 outline outline-black outline-8 ">
-                    {video1 && <VideoPlayer videoSrc={video1}/>} 
+                  {video1 && (
+                    <video
+                      controls
+                      controlsList="nodownload"
+                      disablePictureInPicture
+                      id="videoP"
+                      className="w-full"
+                    >
+                      <source src={video1} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
                 </div>
                 {/* End video player */}
 
@@ -120,7 +131,8 @@ const Step2 = () => {
                 <span className="block py-3"></span>
                 <p>
                   من خودمو تو <span className="underline">کلی بدهی دیدم</span>,
-                  پر از استرس, مریض و <span className="font-semibold">تو بستر مرگ</span>…
+                  پر از استرس, مریض و{" "}
+                  <span className="font-semibold">تو بستر مرگ</span>…
                 </p>
                 <span className="block py-3"></span>
                 <p>
@@ -152,11 +164,13 @@ const Step2 = () => {
               {/* End Button */}
             </div>
           </div>
-          <Link to={"https://wingswebs.ir/"} target="_blank" className="pb-8 text-white pt-2">
+          <Link
+            to={"https://wingswebs.ir/"}
+            target="_blank"
+            className="pb-8 text-white pt-2"
+          >
             توسعه و طراحی سایت با{" "}
-            <span className="text-yellow-400">
-              وینگز وب
-            </span>
+            <span className="text-yellow-400">وینگز وب</span>
           </Link>
         </div>
       </div>

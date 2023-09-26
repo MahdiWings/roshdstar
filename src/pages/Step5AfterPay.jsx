@@ -87,7 +87,7 @@ const Step5AfterPay = () => {
     // تایمر برای تأخیر 10 دقیقه
     const timer = setTimeout(() => {
       setShowContent(true);
-    }, 60000); // 10 دقیقه به میلی‌ثانیه
+    }, 70000); // 10 دقیقه به میلی‌ثانیه
 
     // هنگام عدم نیاز به تایمر، تایمر را حذف کنید
     return () => {
@@ -109,9 +109,10 @@ const Step5AfterPay = () => {
           <div className="w-full h-auto  my-1 rounded-lg outline outline-8 outline-[#ffffff0e] bg-white md:w-[85%] ">
             <div className="p-0">
               {/* Up video */}
-              <div className="w-[98%] text-left my-1 mx-auto bg-gray-300 p-1 rounded-md">
-                <div style={ProgerssBarImage} className="w-[100%]">
-                  <div className="w-[75%] bg-gray-100 text-black">
+              <div className="w-[98%] text-left my-3 mx-auto bg-gray-300 p-1 rounded-md">
+                <div style={ProgerssBarImage} className="w-[100%] h-5">
+                  <div className="w-[35%] text-gray-100 bg-gray-100">
+                     `
                   </div>
                 </div>
               </div>
@@ -129,7 +130,18 @@ const Step5AfterPay = () => {
               {/* End Up video */}
               <div className="flex gap-8 flex-col md:flex-col">
                 <div className="w-full h-full md:w-[94%] mx-auto m-5 mb-10 outline outline-black outline-8 ">
-                  {video4 && <VideoPlayer videoSrc={video4} />}
+                {video4 && (
+            <video
+              controls
+              controlsList="nodownload"
+              disablePictureInPicture
+              id="videoP"
+              className="w-full"
+            >
+              <source src={video4} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
 
                   {/* {video2} */}
                   {/* End video player */}

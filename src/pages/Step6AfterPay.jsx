@@ -92,13 +92,12 @@ const Step6AfterPay = () => {
           <div className="w-full h-auto  my-1 rounded-lg outline outline-8 outline-[#ffffff0e] bg-white md:w-[85%] ">
             <div className="p-0">
               {/* Up video */}
-              <div className="w-[95%] text-left my-5 mx-auto bg-gray-300 p-1 rounded-md">
-                <div style={ProgerssBarImage} className="w-[100%]">
-                  <div className="w-[90%] bg-gray-100 text-black">
-                  </div>
+              <div className="w-[98%] text-left my-4 mx-auto bg-gray-300 p-1 rounded-md">
+                <div style={ProgerssBarImage} className="w-[100%] h-5">
+                  <div className="w-[10%] text-gray-100 bg-gray-100">`</div>
                 </div>
               </div>
-              <div className="my-1 mx-auto md:flex justify-center ">
+              <div className="my-8 mx-auto md:flex justify-center ">
                 <p className="text-2xl font-bold">
                   <span className="text-red-500">صبر کنید!!</span> 50% تخفیف
                   بیشتر بگیرید
@@ -106,8 +105,19 @@ const Step6AfterPay = () => {
               </div>
               {/* End Up video */}
               <div className="flex gap-8 flex-col md:flex-col">
-                <div className="w-full h-full md:w-[94%] mx-auto m-4 outline outline-black outline-8 ">
-                  {video5 && <VideoPlayer videoSrc={video5} />}
+                <div className="w-full h-full md:w-[94%] mx-auto m-4 ">
+                  {video5 && (
+                    <video
+                      controls
+                      controlsList="nodownload"
+                      disablePictureInPicture
+                      id="videoP"
+                      className="w-full"
+                    >
+                      <source src={video5} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
                 </div>
                 {/* {video2} */}
                 {/* End video player */}

@@ -28,7 +28,6 @@
   src: url("fonts/IRANSansWeb_Light.woff") format("woff");
   font-weight: 500;
   font-style: normal;
-  
 }
 
 @font-face {
@@ -44,9 +43,6 @@
   font-weight: 300;
   font-style: normal;
 }
-
-
-
 
 :root {
   font-family: iransans;
@@ -71,6 +67,9 @@
   box-sizing: border-box;
 }
 
+#videoP::-webkit-media-controls-timeline {
+  display: none;
+}
 /* a {
   font-weight: 500;
   color: #646cff;

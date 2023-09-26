@@ -28,7 +28,18 @@ const Step4 = () => {
               <div className="flex gap-8 flex-col  md:flex-row-reverse m-3 lg:mx-16">
                 {/* video player */}
                 <div className="w-full h-full md:w-[86%] outline outline-black outline-8 ">
-                  {video3 && <VideoPlayer videoSrc={video3} />}
+                  {video3 && (
+                    <video
+                      controls
+                      controlsList="nodownload"
+                      disablePictureInPicture
+                      id="videoP"
+                      className="w-full"
+                    >
+                      <source src={video3} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
                 </div>
                 {/* End video player */}
 

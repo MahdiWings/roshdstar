@@ -141,9 +141,9 @@ const Users = () => {
                   className="flex justify-start text-center py-4 hover:bg-[#F8F9FA] pr-4 items-center"
                   key={index}
                 >
-                  <td className="w-[280px]">{user.email}</td>
-                  <td className="w-[32%]">{user.phoneNumber}</td>
-                  <td className="w-[15%]">{user.updatedAt.slice(0, 10)}</td>
+                  <td className="w-[284px]">{user.email}</td>
+                  <td className="w-[29%]">{user.phoneNumber}</td>
+                  <td className="w-[16%]">{user.updatedAt.slice(0, 10)}</td>
                   <td className="w-[20%]">
                     <button onClick={() => handleEdit(user._id)}>
                       <BiSolidMessageSquareEdit className="text-xl m-1 lg:text-2xl" />

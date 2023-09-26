@@ -34,7 +34,18 @@ const Congratulations2 = () => {
           <img className="mx-auto" src={cang} alt="" />
         </div>
         <div className="w-[96%] h-full md:w-[80%] mx-auto -mt-10 outline outline-white outline-4 ">
-          {video8 && <VideoPlayer videoSrc={video8} />}
+          {video8 && (
+            <video
+              controls
+              controlsList="nodownload"
+              disablePictureInPicture
+              id="videoP"
+              className="w-full"
+            >
+              <source src={video8} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
         </div>
         <div className="text-center pt-6 px-4 md:px-16 pb-16 ">
           <p className="text-red-600 leading-[60px] text-3xl font-bold">

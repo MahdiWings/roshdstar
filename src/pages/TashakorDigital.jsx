@@ -125,7 +125,13 @@ const TashakorDigital = () => {
       <div className="w-[100%] flex flex-col mx-auto bg-white mt-4 md:w-[60%]">
         <div className="w-full h-full p-2 mx-auto outline outline-gray-100 outline-8">
           {videoSrc && (
-            <video autoPlay className="w-full">
+            <video
+              controls
+              controlsList="nodownload"
+              disablePictureInPicture
+              id="videoP"
+              className="w-full"
+            >
               <source src={videoSrc} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
@@ -227,16 +233,26 @@ const TashakorDigital = () => {
         </div>
         <div className="text-center border rounded-lg border-orange-500 mx-5 my-8">
           <div className="bg-gradient-to-b from-[#F27833] to-[#DA570C] rounded-t-[7px] py-2  font-semibold px-2 leading-10 text-white">
-            <p className="text-[26px]">صبر کن – این پیام ویژه از اکبر شیرزادی را ببینید</p>
-            <p className="text-[21px] text-yellow-300">معرفی برترین کتاب های 1402 شو بگیرید– رایگان</p>
+            <p className="text-[26px]">
+              صبر کن – این پیام ویژه از اکبر شیرزادی را ببینید
+            </p>
+            <p className="text-[21px] text-yellow-300">
+              معرفی برترین کتاب های 1402 شو بگیرید– رایگان
+            </p>
           </div>
           <div className="p-1 pb-9 rounded-lg" style={ConBgImage}>
             <div>
               <div className="flex flex-col-reverse text-right justify-center mx-auto items-center lg:w-[100%] lg:items-start sm:flex-row">
                 {/* Video */}
                 <div className="w-[96%] h-full md:w-[80%] lg:mr-3 mt-2 mb-8 outline md:outline-none outline-black outline-4 ">
-                  {videoSrc && (
-                    <video controls className="w-full">
+                  {videoSrc2 && (
+                    <video
+                      controls
+                      controlsList="nodownload"
+                      disablePictureInPicture
+                      id="videoP"
+                      className="w-full"
+                    >
                       <source src={videoSrc2} type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
@@ -260,7 +276,8 @@ const TashakorDigital = () => {
                 </span>
                 <span className="flex items-center pt-3 gap-4 text-gray-900 font-semibold text-lg">
                   <FaCheck className="text-green-600 text-[53px] md:text-[32px]" />
-                  یاد بگیر چجوری بیزنستو بر اساس بازاریابی آنلاین و سنتی قدم به قدم استارت بزنی
+                  یاد بگیر چجوری بیزنستو بر اساس بازاریابی آنلاین و سنتی قدم به
+                  قدم استارت بزنی
                 </span>
                 <span className="flex items-center pt-3 gap-4 text-gray-900 font-semibold text-lg">
                   <FaCheck className="text-green-600 text-[45px] md:text-[27px]" />

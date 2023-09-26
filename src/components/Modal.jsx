@@ -132,7 +132,7 @@ export default function Modal() {
                 </div>
                 {/*body*/}
                 <div className="relative py-2 flex flex-col md:flex-row px-5 flex-auto">
-                  <div className="p-2 w-80 md:w-[300px] md:scale-125 md:pt-9 md:pb-10 mx-auto">
+                  <div className="p-2 w-80 md:w-[300px] md:scale-[1.32] md:pt-10 md:pb-11 mx-auto">
                     <img src={imageBook} alt={titleBook} />
                     {/* {imageBook} */}
                   </div>
