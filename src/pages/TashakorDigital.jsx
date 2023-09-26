@@ -6,9 +6,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // این کامپوننت برای اون صفحه جدیدی بود که باید میساختم و در step2 که یک آندرلاین داره و روش بزنیم این صفحه نمایش پیدا کنه
 const TashakorDigital = () => {
+  document.title = "8 راز برای به حقیقت رسوندن آرزوهای مالیتون"
   const navigate = useNavigate();
   const transpatternImage = {
     background: `url(${transpattern})`,
+  };
+  const BacktranspatternImage = {
+    background: `url(${transpattern}) repeat center top #ececec`,
   };
   const ConBgImage = {
     background: `url(${conBg})`,
@@ -110,7 +114,7 @@ const TashakorDigital = () => {
     }
   };
   return (
-    <div className="bg-gray-100 ">
+    <div  style={BacktranspatternImage}>
       <div className="bg-[#3E91A7]">
         <div
           className="w-screen md:w-[98.5vw] h-[14vh] bg-cover bg-center"
