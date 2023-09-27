@@ -43,7 +43,7 @@ export default function Modal() {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "http://roshdstar.onrender.com/api/products",
+        "https://roshdstar.onrender.com/api/products",
         {
           headers: {
             authorization: `${apiKey}`,
@@ -92,7 +92,7 @@ export default function Modal() {
     console.log(product);
     try {
       const response = await axios.post(
-        "http://roshdstar.onrender.com/api/products/email",
+        "https://roshdstar.onrender.com/api/products/email",
         {
           email,
           _id: product._id,
