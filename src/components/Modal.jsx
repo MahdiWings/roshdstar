@@ -10,34 +10,34 @@ export default function Modal() {
   const [product, setProduct] = useState({});
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const [imageBook, setImageBook] = useState("");
-  const [titleBook, setTitleBook] = useState("");
+  // const [imageBook, setImageBook] = useState("");
+  // const [titleBook, setTitleBook] = useState("");
 
-  useEffect(() => {
-    const Book1UrlImage =
-      "https://roshdstar.onrender.com/api/products/email/free";
+  // useEffect(() => {
+  //   const Book1UrlImage =
+  //     "https://roshdstar.onrender.com/api/products/email/free";
 
-    axios
-      .get(Book1UrlImage)
-      .then((res) => {
-        setImageBook(res.data[0].image);
-      })
-      .catch((err) => {
-        console.error("error handling", err);
-      });
+  //   axios
+  //     .get(Book1UrlImage)
+  //     .then((res) => {
+  //       setImageBook(res.data[0].image);
+  //     })
+  //     .catch((err) => {
+  //       console.error("error handling", err);
+  //     });
 
-    const TitleBookUrlImage =
-      "https://roshdstar.onrender.com/api/products/email/free";
+  //   const TitleBookUrlImage =
+  //     "https://roshdstar.onrender.com/api/products/email/free";
 
-    axios
-      .get(TitleBookUrlImage)
-      .then((res) => {
-        setTitleBook(res.data[0].title);
-      })
-      .catch((err) => {
-        console.error("error handling", err);
-      });
-  }, []);
+  //   axios
+  //     .get(TitleBookUrlImage)
+  //     .then((res) => {
+  //       setTitleBook(res.data[0].title);
+  //     })
+  //     .catch((err) => {
+  //       console.error("error handling", err);
+  //     });
+  // }, []);
 
   const fetchProducts = async () => {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
