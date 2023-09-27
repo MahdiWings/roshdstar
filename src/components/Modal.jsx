@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function Modal() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const [product, setProduct] = useState({});
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [imageBook, setImageBook] = useState("");
@@ -38,6 +39,28 @@ export default function Modal() {
       });
   }, []);
 
+  const fetchProducts = async () => {
+    const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
+    try {
+      const response = await axios.get(
+        "http://roshdstar.onrender.com/api/products",
+        {
+          headers: {
+            authorization: `${apiKey}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setProduct(response.data[0]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   const validateEmail = (email) => {
     // Email Pattern
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -66,12 +89,14 @@ export default function Modal() {
     // ارسال ایمیل به بک‌اند
     // پاک کردن پیغام خطا
     setError("");
-
+    console.log(product);
     try {
       const response = await axios.post(
-        "https://roshdstar.onrender.com/api/products/email/free",
+        "http://roshdstar.onrender.com/api/products/email",
         {
           email,
+          _id: product._id,
+          apiKey: "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh",
         }
       );
       console.log(response.data);
@@ -133,7 +158,7 @@ export default function Modal() {
                 {/*body*/}
                 <div className="relative py-2 flex flex-col md:flex-row overflow-hidden px-5 flex-auto">
                   <div className="w-80 md:w-[300px] md:scale-[1.50] md:pt-16 md:pb-14 mx-auto">
-                    <img src={imageBook} alt={titleBook} />
+                  {product && <img src={product.image} alt={product.title} />}
                     {/* {imageBook} */}
                   </div>
                   <div>

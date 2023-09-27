@@ -7,34 +7,28 @@ import Modal from "../components/Modal";
 const Step1 = () => {
   document.title = "رایگان رونمایی کتاب";
 
-  const [imageUrl, setImageUrl] = useState("");
-  const [imageTitle, setImageTitle] = useState("");
+  const [product, setProduct] = useState({});
+
+  const fetchProducts = async () => {
+    const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
+    try {
+      const response = await axios.get(
+        "http://roshdstar.onrender.com/api/products",
+        {
+          headers: {
+            authorization: `${apiKey}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setProduct(response.data[0]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
-    const Book1UrlImage =
-      "https://roshdstar.onrender.com/api/products/email/free";
-
-    axios
-      .get(Book1UrlImage)
-      .then((res) => {
-        setImageUrl(res.data[0].image);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.error("error handling", err);
-      });
-
-    const titleImageUrl =
-      "https://roshdstar.onrender.com/api/products/email/free";
-
-    axios
-      .get(titleImageUrl)
-      .then((res) => {
-        setImageTitle(res.data[0].title);
-      })
-      .catch((err) => {
-        console.error("error handling", err);
-      });
+    fetchProducts();
   }, []);
 
   return (
@@ -98,14 +92,17 @@ const Step1 = () => {
 
             {/* End UL List Tag Text */}
           </div>
-        <img src="https://www.arezooyemali.ir/root/css/lw/freebook/arrow.png" className="hidden lg:block lg:-mt-12 lg:mr-[70px]" alt="arrow" />
-
+          <img
+            src="https://www.arezooyemali.ir/root/css/lw/freebook/arrow.png"
+            className="hidden lg:block lg:-mt-12 lg:mr-[70px]"
+            alt="arrow"
+          />
         </div>
 
         {/* Image Book */}
         <div className="pb-3 w-[100%] md:w-[30%] -m-20 lg:m-12">
           <div className="w-[370px] lg:scale-[1.80] lg:mt-20 lg:w-[350px]">
-            <img src={imageUrl} alt={imageTitle} />
+            {product && <img src={product.image} alt={product.title} />}
           </div>
         </div>
       </div>
