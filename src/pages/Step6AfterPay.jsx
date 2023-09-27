@@ -48,9 +48,9 @@ const Step6AfterPay = () => {
 
   useEffect(() => {
     const jwtToken = localStorage.getItem("token");
-    if (!jwtToken) {
-      navigate("/step4");
-    }
+    // if (!jwtToken) {
+    //   navigate("/step4");
+    // }
     fetchProducts();
   }, []);
 
@@ -140,10 +140,12 @@ const Step6AfterPay = () => {
                   <p className="text-center text-green-500 text-2xl font-bold pb-5">
                     %50 تخفیف از قیمت همیشگی
                   </p>
-                  <div className="mx-auto flex  justify-center my-4z">
-                    <CountdownTimer />
+                  <div className="mx-auto flex  justify-center">
+                    {/* Ifarm CountDown */}
+                    <CountdownTimer src="http://5.144.131.247/~lintobot/test/1/" />
+                    {/* Ifarm CountDown */}
                   </div>
-                  <div className="my-0 p-3 md:gap-8 flex flex-col md:flex-row-reverse">
+                  <div className="-mt-14 p-3 md:gap-8 flex flex-col md:flex-row-reverse">
                     <div className="w-full md:w-[55%] h-full border-gray-600 border-dashed border-[3px] bg-[#FFFCCC]">
                       <p className="text-xl font-bold text-center p-4">
                         <span className="text-red-600">بله!</span> من نقشه راه
