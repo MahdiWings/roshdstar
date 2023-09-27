@@ -48,9 +48,9 @@ const Step6AfterPay = () => {
 
   useEffect(() => {
     const jwtToken = localStorage.getItem("token");
-    // if (!jwtToken) {
-    //   navigate("/step4");
-    // }
+    if (!jwtToken) {
+      navigate("/step4");
+    }
     fetchProducts();
   }, []);
 
