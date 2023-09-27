@@ -142,7 +142,7 @@ const Step6AfterPay = () => {
                   </p>
                   <div className="mx-auto flex  justify-center">
                     {/* Ifarm CountDown */}
-                    <CountdownTimer src="http://5.144.131.247/~lintobot/test/1/" />
+                    <CountdownTimer src="https://runiran.lintobot.com/test/1/" />
                     {/* Ifarm CountDown */}
                   </div>
                   <div className="-mt-14 p-3 md:gap-8 flex flex-col md:flex-row-reverse">
