@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import transpattern from "../images/trans_pattern1.png";
 import conBg from "../images/con-bg.jpg";
 import { FaCheck, FaCheckCircle } from "react-icons/fa";
 import axios from "axios";
+import digital from "../images/digital.jpg";
+import step4 from "../images/step4.jpg";
 import { useNavigate } from "react-router-dom";
+import { BsPlayFill } from "react-icons/bs";
+import { BsPauseFill } from "react-icons/bs";
 // این کامپوننت برای اون صفحه جدیدی بود که باید میساختم و در step2 که یک آندرلاین داره و روش بزنیم این صفحه نمایش پیدا کنه
 const TashakorDigital = () => {
-  document.title = "8 راز برای به حقیقت رسوندن آرزوهای مالیتون"
+  document.title = "8 راز برای به حقیقت رسوندن آرزوهای مالیتون";
   const navigate = useNavigate();
   const transpatternImage = {
     background: `url(${transpattern})`,
@@ -19,9 +23,7 @@ const TashakorDigital = () => {
   };
 
   const [imageSrc, setImageSrc] = useState("");
-  const [imageTitle, setImageTitle] = useState("");
   const [imageSrc2, setImageSrc2] = useState("");
-  const [imageTitle2, setImageTitle2] = useState("");
   const [videoSrc, setVideoSrc] = useState("");
   const [videoSrc2, setVideoSrc2] = useState("");
   const [downloadLink, setDownloadLink] = useState("");
@@ -30,19 +32,16 @@ const TashakorDigital = () => {
   useEffect(() => {
     // عکس و تایتل کتاب اول
     axios
-      .get("https://roshdstar.onrender.com/api/products/email/free")
-      .then((res) => {
-        setImageSrc(res.data[0].image);
-        // console.log(res.data);
+      .get("https://api.startemali.ir/api/products", {
+        headers: {
+          authorization: `${apiKey}`,
+          "Content-Type": "application/json",
+        },
       })
-      .catch((err) => {
-        console.error("error handling", err);
-      });
-
-    axios
-      .get("https://roshdstar.onrender.com/api/products/email/free")
       .then((res) => {
-        setImageTitle(res.data[0].title);
+        setImageSrc(res.data[0]);
+        setDownloadLink(res.data[0].url);
+
         // console.log(res.data);
       })
       .catch((err) => {
@@ -52,14 +51,14 @@ const TashakorDigital = () => {
     // عکس و تایتل کتاب دوم
 
     axios
-      .get("https://roshdstar.onrender.com/api/products", {
+      .get("https://api.startemali.ir/api/products", {
         headers: {
           authorization: `${apiKey}`,
           "Content-Type": "application/json",
         },
       })
       .then((res) => {
-        setImageSrc2(res.data[1].image);
+        setImageSrc2(res.data[1]);
         // console.log(res.data);
       })
       .catch((err) => {
@@ -67,22 +66,7 @@ const TashakorDigital = () => {
       });
 
     axios
-      .get("https://roshdstar.onrender.com/api/products", {
-        headers: {
-          authorization: `${apiKey}`,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        setImageTitle2(res.data[1].title);
-        // console.log(res.data);
-      })
-      .catch((err) => {
-        console.error("error handling", err);
-      });
-
-    axios
-      .get("https://roshdstar.onrender.com/api/pages/4")
+      .get("https://api.startemali.ir/api/pages/4")
       .then((res) => {
         setVideoSrc(res.data.video);
         // console.log(res.data);
@@ -92,7 +76,7 @@ const TashakorDigital = () => {
       });
 
     axios
-      .get("https://roshdstar.onrender.com/api/pages/3")
+      .get("https://api.startemali.ir/api/pages/3")
       .then((res) => {
         setVideoSrc2(res.data.video);
         // console.log(res.data);
@@ -100,45 +84,69 @@ const TashakorDigital = () => {
       .catch((err) => {
         console.error("error handling", err);
       });
+    window.scrollTo(0, 0);
   }, []);
 
-  const handleDownloadClick = async () => {
-    try {
-      const response = await axios.get(
-        "https://roshdstar.onrender.com/api/products/1"
-      );
-      setDownloadLink(response.data.url);
-      // console.log(response.data.url);
-    } catch (error) {
-      console.error(error);
+  // VideoPlayer
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying2, setIsPlaying2] = useState(false);
+  const videoRef = useRef(null);
+
+  const handlePlayPause = () => {
+    const video = document.getElementById("videop");
+    if (!isPlaying) {
+      video.play();
+    } else {
+      video.pause();
     }
+    setIsPlaying(!isPlaying);
   };
+  const handlePlayPause2 = () => {
+    const video2 = document.getElementById("videop2");
+    if (!isPlaying2) {
+      video2.play();
+    } else {
+      video2.pause();
+    }
+    setIsPlaying2(!isPlaying2);
+  };
+
   return (
-    <div  style={BacktranspatternImage}>
+    <div style={BacktranspatternImage}>
       <div className="bg-[#3E91A7]">
         <div
           className="w-screen md:w-[98.5vw] h-[14vh] bg-cover bg-center"
           style={transpatternImage}
         >
-          <div className="flex items-center flex-col pt-3.5 font-bold text-white text-2xl">
+          <div className="flex items-center flex-col pt-3.5 font-bold text-white text-xl lg:text-2xl">
             <h2 className="text-yellow-200">تبریک!!</h2>
             <p> مینی کتاب رایگان منو در زیر دانلود کنید!</p>
           </div>
         </div>
       </div>
-      <div className="w-[100%] flex flex-col mx-auto bg-white mt-4 md:w-[60%]">
-        <div className="w-full h-full p-2 mx-auto outline outline-gray-100 outline-8">
+      <div className="w-[95%] flex flex-col mx-auto bg-white mt-4 md:w-[60%]">
+        <div className="w-full h-full relative p-2 mx-auto outline outline-gray-100 outline-8">
           {videoSrc && (
-            <video
-              controls
-              controlsList="nodownload"
-              disablePictureInPicture
-              id="videoP"
-              className="w-full"
-            >
-              <source src={videoSrc} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <div>
+              <video
+                poster={digital}
+                id="videop"
+                ref={videoRef}
+                className="w-full"
+                controls={false}
+                onClick={handlePlayPause}
+              >
+                <source src={videoSrc} type="video/mp4" />
+              </video>
+              <div>
+                <button
+                  onClick={handlePlayPause}
+                  className="absolute lg:bottom-[30px] bottom-[15px] right-[46%] lg:right-[48%] text-2xl lg:text-3xl text-gray-200 rounded-full p-1 hover:text-white hover:bg-[#070707a6] transition-all"
+                >
+                  {isPlaying ? <BsPauseFill /> : <BsPlayFill />}
+                </button>
+              </div>
+            </div>
           )}
         </div>
         {/* first Box Section */}
@@ -189,13 +197,10 @@ const TashakorDigital = () => {
                 </div>
 
                 {/* Image Book */}
-                <div className="p-2 w-80 md:w-[250px] lg:scale-[2.8] lg:mt-28 lg:m-10">
-                  <img
-                    // width={300}
-                    src={imageSrc}
-                    alt={imageTitle}
-                  />
-                  {/* {imageUrl} */}
+                <div className="p-2 -my-9 w-80 md:w-[300px] lg:scale-[1.6] lg:my-8 lg:mx-8">
+                  {imageSrc && (
+                    <img src={imageSrc.image} alt={imageSrc.title} />
+                  )}
                 </div>
               </div>
               <div className="bg-[#3E91A7] w-[99%] md:w-[90%] p-3 mx-auto shadow-lg shadow-gray-500 rounded-lg text-xl font-bold text-white">
@@ -210,26 +215,25 @@ const TashakorDigital = () => {
                         دانلود مینی کتاب رایگان من !
                       </p>
                     </div>
-                    <div className="py-3 md:py-6 border-4 border-yellow-300 border-dashed block mx-auto mt-5 w-60 text-3xl bg-[#195161] text-yellow-400">
+                    <div className="py-3 md:py-6 border-4 border-yellow-300 border-dashed block mx-auto mt-5 w-48  lg:w-60 text-3xl bg-[#195161] text-yellow-400">
                       100% رایگان
                     </div>
                   </div>
                   <p>آفر به مدت محدود</p>
-                  <a href={downloadLink} download>
-                    <button
-                      onClick={handleDownloadClick}
-                      className="bg-gradient-to-b from-[#FFF800] to-[#FFBC00] w-[85%] my-4 border-b-4 border-orange-500 py-4 px-6 rounded-xl"
-                      // onClick={handleNextStep}
-                      type="submit"
+                  {downloadLink && (
+                    <a
+                      className="bg-gradient-to-b from-[#FFF800] to-[#FFBC00] block w-[85%] mx-auto my-4 border-b-4 border-orange-500 py-4 px-6 rounded-xl"
+                      href={downloadLink}
+                      download
                     >
                       <p className="text-blue-950 text-2xl md:text-3xl">
                         دانلود رایگان
                       </p>{" "}
-                      <p className="text-sm md:text-lg font-semibold text-red-700">
+                      <span className="text-sm md:text-lg font-semibold text-red-700">
                         اینجا کلیک کنید برای ذخیره
-                      </p>{" "}
-                    </button>
-                  </a>
+                      </span>{" "}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -248,28 +252,37 @@ const TashakorDigital = () => {
             <div>
               <div className="flex flex-col-reverse text-right justify-center mx-auto items-center lg:w-[100%] lg:items-start sm:flex-row">
                 {/* Video */}
-                <div className="w-[96%] h-full md:w-[80%] lg:mr-3 mt-2 mb-8 outline md:outline-none outline-black outline-4 ">
+                <div className="w-[96%] relative h-full md:w-[80%] lg:mr-3 mt-2 mb-8 ">
                   {videoSrc2 && (
-                    <video
-                      controls
-                      controlsList="nodownload"
-                      disablePictureInPicture
-                      id="videoP"
-                      className="w-full"
-                    >
-                      <source src={videoSrc2} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                    <div>
+                      <video
+                        poster={step4}
+                        id="videop2"
+                        ref={videoRef}
+                        className="w-full"
+                        controls={false}
+                        onClick={handlePlayPause2}
+                      >
+                        <source src={videoSrc2} type="video/mp4" />
+                      </video>
+                      <div>
+                        <button
+                          onClick={handlePlayPause2}
+                          className="absolute bottom-[10px] lg:bottom-[10px] right-[44%] lg:right-[44%] text-2xl lg:text-3xl text-gray-300 rounded-full p-1 hover:text-white hover:bg-[#070707a6] transition-all"
+                        >
+                          {isPlaying2 ? <BsPauseFill /> : <BsPlayFill />}
+                        </button>
+                      </div>
+                    </div>
                   )}
                 </div>
                 {/* Video */}
                 {/* Image Book */}
-                <div className="p-2 w-80 md:w-[350px] lg:scale-[1.4] lg:mr-5 lg:mt-12">
-                  <img
-                    // width={300}
-                    src={imageSrc2}
-                    alt={imageTitle2}
-                  />
+                <div className="p-2 w-80 md:w-[350px] lg:scale-[1.4] lg:mr-5 lg:mt-10">
+                  {imageSrc2 && (
+                    <img src={imageSrc2.image} alt={imageSrc2.title} />
+                  )}
+
                   {/* {imageUrl} */}
                 </div>
               </div>

@@ -17,7 +17,7 @@ const Information = () => {
 
       // ارسال درخواست به سرور برای تغییر رمز عبور
       const response = axios
-      .patch(`https://roshdstar.onrender.com/api/user/update/64f9d77746542d2d998654e3`, {
+      .patch(`https://api.startemali.ir/api/user/update/64f9d77746542d2d998654e3`, {
         password: newPassword,
       }, {
         headers: {

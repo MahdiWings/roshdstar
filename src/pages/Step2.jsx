@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
-import VideoPlayer from "../components/VideoPlayer";
+import { useEffect, useRef, useState } from "react";
+// import VideoPlayer from "../components/VideoPlayer";
 import { FaCheckCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import step1 from "../images/step1.jpg";
 import arrow from "../images/arrow2.png";
+import { BsPlayFill } from "react-icons/bs";
+import { BsPauseFill } from "react-icons/bs";
 
 const Step2 = () => {
   document.title = "مرحله دوم - رونمایی";
@@ -12,14 +15,32 @@ const Step2 = () => {
 
   useEffect(() => {
     axios
-      .get("https://roshdstar.onrender.com/api/pages/1")
+      .get("https://api.startemali.ir/api/pages/1")
       .then((res) => {
         setVideo1(res.data.video);
       })
       .catch((err) => {
         console.error("error handling", err);
       });
+    window.scrollTo(0, 0);
   }, []);
+
+  // VideoPlayer
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  const handlePlayPause = () => {
+    const video = document.getElementById("videop");
+    if (!isPlaying) {
+      video.play();
+    } else {
+      video.pause();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  // VideoPlayer
+
   return (
     <>
       <div className=" w-[98vw]  h-screen overflow-hidden">
@@ -34,18 +55,30 @@ const Step2 = () => {
             <div className="p-6">
               <div className="flex gap-8 flex-col md:flex-row">
                 {/* video player */}
-                <div className="w-full h-full md:w-[50%] md:mr-3 outline outline-black outline-8 ">
+
+                <div className="w-full h-full relative md:w-[50%] md:mr-3 outline outline-black outline-8 ">
                   {video1 && (
-                    <video
-                      controls
-                      controlsList="nodownload"
-                      disablePictureInPicture
-                      id="videoP"
-                      className="w-full"
-                    >
-                      <source src={video1} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                    <div>
+                      <video
+                        poster={step1}
+                        id="videop"
+                        ref={videoRef}
+                        className="w-full"
+                        controls={false}
+                        onClick={handlePlayPause}
+                      >
+                        <source src={video1} type="video/mp4" />
+                      </video>
+
+                      <div>
+                        <button
+                          onClick={handlePlayPause}
+                          className="absolute bottom-1.5 right-[45%] text-3xl text-gray-200 rounded-full p-1 hover:text-white hover:bg-[#070707a6] transition-all"
+                        >
+                          {isPlaying ? <BsPauseFill /> : <BsPlayFill />}
+                        </button>
+                      </div>
+                    </div>
                   )}
                 </div>
                 {/* End video player */}

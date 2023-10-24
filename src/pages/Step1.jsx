@@ -13,7 +13,7 @@ const Step1 = () => {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://roshdstar.onrender.com/api/products",
+        "https://api.startemali.ir/api/products",
         {
           headers: {
             authorization: `${apiKey}`,
@@ -29,6 +29,7 @@ const Step1 = () => {
 
   useEffect(() => {
     fetchProducts();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -101,13 +102,13 @@ const Step1 = () => {
 
         {/* Image Book */}
         <div className="pb-3 w-[100%] md:w-[30%] -m-20 lg:m-12">
-          <div className="w-[370px] lg:scale-[1.80] lg:mt-20 lg:w-[350px]">
+          <div className="w-[370px] -mt-5 lg:scale-[1.25] lg:-mt-10 lg:w-[380px]">
             {product && <img src={product.image} alt={product.title} />}
           </div>
         </div>
       </div>
       {/* Button Next Page */}
-      <div className="flex justify-center mt-9 lg:-mt-14">
+      <div className="flex justify-center mt-1 lg:-mt-14">
         <Modal />
       </div>
       {/* Button Next Page */}

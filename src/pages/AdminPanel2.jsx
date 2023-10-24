@@ -10,12 +10,12 @@ const AdminPanel2 = () => {
     const token = localStorage.getItem('token');
     const requireAuth = async () => {
       try {
-        const response = await axios.get('https://roshdstar.onrender.com/api/user/isadmin', {
+        const response = await axios.get('https://api.startemali.ir/api/user/isadmin', {
       headers: {
         authorization: `Bearer ${token}` // Include the token in the request headers
       }
       })
-      console.log('this is the response', response)
+      // console.log('this is the response', response)
       if (!response.data.isAdmin) {
         navigate('/login-admin'); 
       }

@@ -16,15 +16,12 @@ const DashBorad = () => {
     setToken(storedToken);
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(
-          "https://roshdstar.onrender.com/api/user",
-          {
-            headers: {
-              authorization: `Bearer ${storedToken}`,
-            },
-          }
-        );
-        console.log(response);
+        const response = await axios.get("https://api.startemali.ir/api/user", {
+          headers: {
+            authorization: `Bearer ${storedToken}`,
+          },
+        });
+        // console.log(response);
         setTotalUser(response.data.length);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -35,7 +32,7 @@ const DashBorad = () => {
     const fetchPurchases = async () => {
       try {
         const response = await axios.get(
-          "https://roshdstar.onrender.com/api/payment",
+          "https://api.startemali.ir/api/payment",
           {
             headers: {
               authorization: `Bearer ${storedToken}`,
@@ -71,7 +68,7 @@ const DashBorad = () => {
             <p className="text-white font-bold">
               تعداد
               <br />
-              مشتریان
+              کاربران
             </p>
           </div>
           <p className="text-3xl font-bold text-white">

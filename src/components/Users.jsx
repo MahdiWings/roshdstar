@@ -21,7 +21,7 @@ const Users = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "https://roshdstar.onrender.com/api/user",
+          "https://api.startemali.ir/api/user",
           {
             headers: {
               authorization: `Bearer ${storedToken}`,
@@ -48,7 +48,7 @@ const Users = () => {
     // انجام حذف کاربر از API و بستن مدال تأیید حذف
     axios
       .delete(
-        `https://roshdstar.onrender.com/api/user/delete/${userToDelete}`,
+        `https://api.startemali.ir/api/user/delete/${userToDelete}`,
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -95,7 +95,7 @@ const Users = () => {
     // ارسال درخواست به API برای به‌روزرسانی اطلاعات کاربر
     axios
       .patch(
-        `https://roshdstar.onrender.com/api/user/update/${id}`,
+        `https://api.startemali.ir/api/user/update/${id}`,
         {
           email: editEmail,
           password: editPassword,

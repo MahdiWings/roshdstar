@@ -10,40 +10,12 @@ export default function Modal() {
   const [product, setProduct] = useState({});
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  // const [imageBook, setImageBook] = useState("");
-  // const [titleBook, setTitleBook] = useState("");
-
-  // useEffect(() => {
-  //   const Book1UrlImage =
-  //     "https://roshdstar.onrender.com/api/products/email/free";
-
-  //   axios
-  //     .get(Book1UrlImage)
-  //     .then((res) => {
-  //       setImageBook(res.data[0].image);
-  //     })
-  //     .catch((err) => {
-  //       console.error("error handling", err);
-  //     });
-
-  //   const TitleBookUrlImage =
-  //     "https://roshdstar.onrender.com/api/products/email/free";
-
-  //   axios
-  //     .get(TitleBookUrlImage)
-  //     .then((res) => {
-  //       setTitleBook(res.data[0].title);
-  //     })
-  //     .catch((err) => {
-  //       console.error("error handling", err);
-  //     });
-  // }, []);
 
   const fetchProducts = async () => {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://roshdstar.onrender.com/api/products",
+        "https://api.startemali.ir/api/products",
         {
           headers: {
             authorization: `${apiKey}`,
@@ -89,17 +61,17 @@ export default function Modal() {
     // ارسال ایمیل به بک‌اند
     // پاک کردن پیغام خطا
     setError("");
-    console.log(product);
+    // console.log(product);
     try {
       const response = await axios.post(
-        "https://roshdstar.onrender.com/api/products/email",
+        "https://api.startemali.ir/api/products/email",
         {
           email,
           _id: product._id,
           apiKey: "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh",
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       // موفقیت: ایمیل با موفقیت ارسال شده است
       navigate("/step2");
     } catch (error) {
@@ -148,7 +120,7 @@ export default function Modal() {
                     </span>
                   </button>
                   <div className="w-[100%] text-left  bg-gray-300 px-10 py-2 rounded">
-                    <div className="w-[100%] bg-green-400">
+                    <div className="w-[100%] bg-[#3fd12c]">
                       <div className="w-[48%] bg-gray-100 text-black">
                         <p className="-ml-14">Completed 50%</p>
                       </div>
@@ -157,9 +129,12 @@ export default function Modal() {
                 </div>
                 {/*body*/}
                 <div className="relative py-2 flex flex-col md:flex-row overflow-hidden px-5 flex-auto">
-                  <div className="w-80 md:w-[300px] md:scale-[1.50] md:pt-16 md:pb-14 mx-auto">
-                  {product && <img src={product.image} alt={product.title} />}
-                    {/* {imageBook} */}
+                  <div className="w-[280px] -my-12 md:w-[250px] md:scale-[1.2] md:my-0 md:mx-5 md:ml-12 mx-auto">
+                    {product && <img src={product.secondImage} alt={product.title} />}
+                    {/* <img
+                      src="https://www.startemali.ir/images/jeld-ketab-mockup-lowsize-arrow.png"
+                      alt="8 راز تبدیل هر آرزویی به واقعیت"
+                    /> */}
                   </div>
                   <div>
                     <p className="mb-4 text-center text-sm md:text-lg md:mt-10 md:mb-5 font-bold">

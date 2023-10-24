@@ -12,22 +12,22 @@ const LoginAdmin = () => {
 
     try {
       const response = await axios.post(
-        "https://roshdstar.onrender.com/api/user/admin/login",
+        "https://api.startemali.ir/api/user/admin/login",
         {
           email: email,
           password: password,
         }
       );
-      console.log(response);
+      // console.log(response);
       const { token } = response.data;
 
       // ذخیره توکن در localStorage یا در مکان مناسب دیگر
       localStorage.setItem("token", token);
-      window.location.href = 'https://mahdiwings.github.io/roshdstar/#/admin-panel';
+      window.location.href = 'https://startemali.ir/admin-panel';
       console.log("Admin Login successful");
-      console.log("Token:", token);
+      // console.log("Token:", token);
     } catch (err) {
-      console.log(err.response.data)
+      // console.log(err.response.data)
       alert(err.response.data);
     }
   };

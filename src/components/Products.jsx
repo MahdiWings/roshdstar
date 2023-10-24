@@ -14,11 +14,29 @@ const Products = () => {
   const [isOpen4, setIsOpen4] = useState(false);
   const [isOpen5, setIsOpen5] = useState(false);
 
+  // Banner
+  const [isOpenImg1, setIsOpenImg1] = useState(false);
+  // Banner State
+  const [ImageUrl1, setImageUrl1] = useState({});
+
+  const fetchBanner = async () => {
+    try {
+      const res = await axios
+        .get("https://api.startemali.ir/api/pages/3")
+        .then((res) => {
+          setImageUrl1(res.data);
+          console.log(res.data);
+        });
+    } catch (err) {
+      console.error("error handling", err);
+    }
+  };
+
   const fetchProducts = async () => {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://roshdstar.onrender.com/api/products",
+        "https://api.startemali.ir/api/products",
         {
           headers: {
             authorization: `${apiKey}`,
@@ -40,6 +58,7 @@ const Products = () => {
     const jwt = localStorage.getItem("token");
     setToken(jwt);
     fetchProducts();
+    fetchBanner();
   }, []);
 
   // اینا برای drop down هست
@@ -62,6 +81,31 @@ const Products = () => {
   const toggleDropDown5 = () => {
     setIsOpen5(!isOpen5);
   };
+  // Banner
+  const toggleDropDownImg1 = () => {
+    setIsOpenImg1(!isOpenImg1);
+  };
+
+  const updateBanners = (banners) => {
+    axios
+      .patch(
+        "https://api.startemali.ir/api/pages/3",
+        { banner: banners },
+        {
+          headers: {
+            authorization: `Bearer ${token}`, // Include the token in the request headers
+          },
+        }
+      )
+      .then((response) => {
+        alert("بنرها با موفقیت به روزرسانی شدند");
+        console.log(response.data, "بنرها با موفقیت به روزرسانی شدند");
+      })
+      .catch((error) => {
+        console.error(error.response.data);
+        alert("خطا در به‌روزرسانی بنرها:", error);
+      });
+  };
 
   const updateProduct = (product) => {
     const updateData = { ...product };
@@ -81,7 +125,7 @@ const Products = () => {
 
     axios
       .patch(
-        `https://roshdstar.onrender.com/api/products/${product.pageNumber}`,
+        `https://api.startemali.ir/api/products/${product.pageNumber}`,
         updateData,
         {
           headers: {
@@ -120,7 +164,7 @@ const Products = () => {
                 >
                   برای تغییرات اینجا کلیک کنید{" "}
                 </div>
-                {isOpen1 && (
+                {isOpen1 && Object.keys(product1).length > 0 && (
                   <div className="mt-2 bg-[#ddeaff] p-2 rounded-lg">
                     <div className="flex items-center justify-between lg:pl-8 mt-2">
                       <label className="lg:text-base font-semibold pl-2">
@@ -144,6 +188,22 @@ const Products = () => {
                         value={product1.image}
                         onChange={(e) =>
                           setProduct1({ ...product1, image: e.target.value })
+                        }
+                        placeholder="Url مورد نظر خود را وارد کنید"
+                        className="border w-[87%] placeholder:text-sm  placeholder:text-right border-gray-200 text-left  p-2 rounded-lg"
+                      />
+                    </div>
+
+                    <div className="flex items-center justify-between lg:ml-8 mt-2">
+                      <label className="text-sm pl-2">عکس مودال:</label>
+                      <input
+                        type="text"
+                        value={product1.secondImage}
+                        onChange={(e) =>
+                          setProduct1({
+                            ...product1,
+                            secondImage: e.target.value,
+                          })
                         }
                         placeholder="Url مورد نظر خود را وارد کنید"
                         className="border w-[87%] placeholder:text-sm  placeholder:text-right border-gray-200 text-left  p-2 rounded-lg"
@@ -219,7 +279,7 @@ const Products = () => {
                 >
                   برای تغییرات اینجا کلیک کنید{" "}
                 </div>
-                {isOpen2 && (
+                {isOpen2 && Object.keys(product2).length > 0 && (
                   <div className="mt-2 bg-[#ddeaff] p-2 rounded-lg">
                     <div className="flex items-center justify-between lg:pl-8 mt-2">
                       <label className="lg:text-base font-semibold pl-2">
@@ -294,7 +354,7 @@ const Products = () => {
                 >
                   برای تغییرات اینجا کلیک کنید{" "}
                 </div>
-                {isOpen3 && (
+                {isOpen3 && Object.keys(product3).length > 0 && (
                   <div className="mt-2 bg-[#ddeaff] p-2 rounded-lg">
                     <div className="flex items-center justify-between lg:pl-8 mt-2">
                       <label className="lg:text-base font-semibold pl-2">
@@ -392,7 +452,7 @@ const Products = () => {
                 >
                   برای تغییرات اینجا کلیک کنید{" "}
                 </div>
-                {isOpen4 && (
+                {isOpen4 && Object.keys(product4).length > 0 && (
                   <div className="mt-2 bg-[#ddeaff] p-2 rounded-lg">
                     <div className="flex items-center justify-between lg:pl-8 mt-2">
                       <label className="lg:text-base font-semibold pl-2">
@@ -475,7 +535,7 @@ const Products = () => {
                 >
                   برای تغییرات اینجا کلیک کنید{" "}
                 </div>
-                {isOpen5 && (
+                {isOpen5 && Object.keys(product5).length > 0 && (
                   <div className="mt-2 bg-[#ddeaff] p-2 rounded-lg">
                     <div className="flex items-center justify-between lg:pl-8 mt-2">
                       <label className="lg:text-base font-semibold pl-2">
@@ -554,6 +614,66 @@ const Products = () => {
           {/* </div> */}
         </div>
       </div>
+      {/* Photo Pages */}
+      <div className="mx-auto lg:mx-0 lg:flex lg:flex-col w-full lg:w-[80vw] h-screen">
+        <div className="mt-0 mb-16 mx-4 lg:mx-16">
+          {/* Photos */}
+          <div>
+            <h2 className="font-bold text-xl">بنر ها</h2>
+            <div className="w-[50px] h-0.5 mt-1 bg-black"></div>
+
+            <div className="my-10 bg-slate-50 shadow-xl h-auto w-[100%] lg:w-[90%] p-8 rounded-xl">
+              <div className="flex flex-wrap justify-between gap-6 pb-5 md:gap-x-4 md:gap-y-8 items-center  ">
+                {/* Second Product */}
+                <div className="mx-2 my-2 w-full ">
+                  <div
+                    onClick={toggleDropDownImg1}
+                    className="cursor-pointer py-4 border bg-[#1E40AF] mt-3 text-white font-bold border-gray-400 p-2 rounded-lg"
+                  >
+                    برای تغییرات اینجا کلیک کنید{" "}
+                  </div>
+                  {isOpenImg1 && Object.keys(product1).length > 0 && (
+                    <div className="mt-2 bg-[#ddeaff] p-2 rounded-lg">
+                      {ImageUrl1.banner.map((banner, index) => (
+                        <div
+                          key={index}
+                          className="flex justify-between items-center lg:ml-8 mt-2"
+                        >
+                          <label className="text-sm pl-2">{`بنر ${
+                            index + 1
+                          }:`}</label>
+                          <input
+                            type="text"
+                            value={banner.bannerUrl}
+                            onChange={(e) => {
+                              setImageUrl1((prevState) => {
+                                const updatedBanners = [...prevState.banner];
+                                updatedBanners[index].bannerUrl =
+                                  e.target.value;
+                                return { ...prevState, banner: updatedBanners };
+                              });
+                            }}
+                            placeholder="Url مورد نظر خود را وارد کنید"
+                            className="border w-[89%] placeholder:text-sm placeholder:text-right border-gray-200 text-left p-2 rounded-lg"
+                          />
+                        </div>
+                      ))}
+                      <button
+                        onClick={() => updateBanners(ImageUrl1.banner)}
+                        className="bg-green-500 px-6 py-2 rounded-lg text-center mt-3 text-white"
+                      >
+                        ذخیره
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Photo Pages */}
     </div>
   );
 };

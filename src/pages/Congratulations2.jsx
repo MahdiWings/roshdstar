@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useMyContext } from "../components/MyContext";
 import cang from "../images/cang.png";
-import VideoPlayer from "../components/VideoPlayer";
+// import VideoPlayer from "../components/VideoPlayer";
+import { BsPlayFill } from "react-icons/bs";
+import { BsPauseFill } from "react-icons/bs";
+import step8 from "../images/step8.jpg";
+
 import axios from "axios";
 const Congratulations2 = () => {
-  const { name } = useMyContext();
+  // const { name } = useMyContext();
+  // const name = localStorage.getItem("name");
+
   document.title = "تبریک - عملیات با موفقیت انجام شد";
   // اگر  محصول 190 یا 90 تومنی رو هم خریده بود این کامپوننت رو نشون بده
   // اگر محصول های 7 یا 67 تومنی رو خریده باشه اون یکی کامپوننت با اسم همین ولی بدون شماره رو نمایش بده
@@ -14,7 +20,7 @@ const Congratulations2 = () => {
   useEffect(() => {
     localStorage.clear();
     axios
-      .get("https://roshdstar.onrender.com/api/pages/8")
+      .get("https://api.startemali.ir/api/pages/8")
       .then((res) => {
         setVideo8(res.data.video);
       })
@@ -22,29 +28,55 @@ const Congratulations2 = () => {
         console.error("error handling", err);
       });
   }, []);
+
+  // VideoPlayer
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  const handlePlayPause = () => {
+    const video = document.getElementById("videop");
+    if (!isPlaying) {
+      video.play();
+    } else {
+      video.pause();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div className="bg-[#010101] w-full h-full">
       <div>
         <div className="bg-[#21557A] py-6 text-center">
           <p className="text-white text-xl font-semibold">
-            {name} عزیز شما یک رشد استارتر شدید.
+            شما دانشپذیر رشد استار شدید.
           </p>
         </div>
         <div className="my-12">
           <img className="mx-auto" src={cang} alt="" />
         </div>
-        <div className="w-[96%] h-full md:w-[80%] mx-auto -mt-10 outline outline-white outline-4 ">
+        <div className="w-[96%] relative h-full md:w-[80%] mx-auto -mt-10 outline outline-white outline-4 ">
           {video8 && (
-            <video
-              controls
-              controlsList="nodownload"
-              disablePictureInPicture
-              id="videoP"
-              className="w-full"
-            >
-              <source src={video8} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <div>
+              <video
+                poster={step8}
+                id="videop"
+                ref={videoRef}
+                className="w-full"
+                controls={false}
+                onClick={handlePlayPause}
+              >
+                <source src={video8} type="video/mp4" />
+              </video>
+
+              <div>
+                <button
+                  onClick={handlePlayPause}
+                  className="absolute bottom-2 right-[45%] lg:bottom-4 lg:text-4xl lg:right-[48%] text-2xl text-gray-300 rounded-full p-1 hover:text-white hover:bg-[#070707a6] transition-all"
+                >
+                  {isPlaying ? <BsPauseFill /> : <BsPlayFill />}
+                </button>
+              </div>
+            </div>
           )}
         </div>
         <div className="text-center pt-6 px-4 md:px-16 pb-16 ">

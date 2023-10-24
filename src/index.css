@@ -67,13 +67,18 @@
   box-sizing: border-box;
 }
 
-#videoP::-webkit-media-controls-timeline {
+/* #videoP::-webkit-media-controls-timeline {
   display: none;
+  pointer-events: none;
 }
 #videoP::-webkit-media-controls-current-time-display,
-#videoP::-webkit-media-controls-time-remaining-display {
+#videoP::-webkit-media-controls-time-remaining-display,
+#videoP::-webkit-media-controls-fullscreen-button {
   display: none !important;
-}
+  pointer-events: none;
+} */
+
+
 /* a {
   font-weight: 500;
   color: #646cff;

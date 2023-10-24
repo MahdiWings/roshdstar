@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { IoMdLock } from "react-icons/io";
 import { useMyContext } from "./MyContext";
@@ -12,6 +12,8 @@ const RegistrationForm = () => {
     useMyContext();
   const [code, setCode] = useState("");
   const [iscodeValid, setIsCodeValid] = useState(false);
+  const [error, setError] = useState("");
+
   // step برای مراحل فرم هست
   // step1 برای وارد شدن اطلاعات کاربر
   // step2 برای وارد کردن کد تایید
@@ -30,7 +32,7 @@ const RegistrationForm = () => {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://roshdstar.onrender.com/api/products",
+        "https://api.startemali.ir/api/products",
         {
           headers: {
             authorization: `${apiKey}`,
@@ -84,12 +86,12 @@ const RegistrationForm = () => {
 
     try {
       const response = await axios.post(
-        "https://roshdstar.onrender.com/api/user/verifycode",
+        "https://api.startemali.ir/api/user/verifycode",
         {
           password: phoneNumber,
         }
       );
-      console.log("Success", response);
+      // console.log("Success", response);
       setStep(2);
     } catch (error) {
       console.error(error);
@@ -99,7 +101,7 @@ const RegistrationForm = () => {
   // برای ثبت نام
   const handleSubmitcode = async (newcode) => {
     const verifyCode = Number(newcode);
-    const responseUrl = "https://roshdstar.onrender.com/api/user/signup";
+    const responseUrl = "https://api.startemali.ir/api/user/signup";
     const formData = {
       email: email,
       password: phoneNumber,
@@ -107,17 +109,20 @@ const RegistrationForm = () => {
     };
     try {
       const response = await axios.post(responseUrl, formData);
-      console.log(response);
+      // console.log(response);
       const token = response.data.token;
       setToken(token);
       localStorage.setItem("token", token);
+      localStorage.setItem("name", name);
       localStorage.setItem("email", email);
       localStorage.setItem("password", phoneNumber);
 
+      setError("");
       setIsCodeValid(true);
       setStep(3);
     } catch (error) {
-      console.log(error.response.data);
+      // console.log(error.response.data);
+      setError("خطا در ثبت نام، کد تأیید را چک کنید");
       setIsCodeValid(false);
     }
   };
@@ -145,9 +150,9 @@ const RegistrationForm = () => {
     const userEmail = localStorage.getItem("email");
     const userPassword = localStorage.getItem("password");
     try {
-      console.log(email);
+      // console.log(email);
       const response = await axios.post(
-        "https://roshdstar.onrender.com/api/payment",
+        "https://api.startemali.ir/api/payment",
         {
           email: userEmail,
           password: userPassword,
@@ -158,7 +163,7 @@ const RegistrationForm = () => {
             : [firstProduct._id],
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
 
       // دریافت لینک درگاه پرداخت از بک‌اند
       const payment = response.data;
@@ -287,6 +292,12 @@ const RegistrationForm = () => {
                     </p>
                   )
                 ) : null} */}
+                {/* {error && <div className="px-5 py-2 w-[85%] rounded text-white text-center bg-red-500"><p>{error}</p></div>} */}
+                {code.length === 4 && error && (
+                  <div className="px-5 py-2 w-[85%] rounded text-white text-center bg-red-500">
+                    <p>{error}</p>
+                  </div>
+                )}
               </div>
               <div className="w-[88%] mx-auto mt-4 h-[1px] bg-white"></div>
               <p className="text-white text-sm px-5 mb-5 text-center mt-4">
@@ -342,8 +353,7 @@ const RegistrationForm = () => {
                       پیشنهادی فقط برای یکبار - فقط 67 هزار تومان:
                     </span>{" "}
                     بیش از 2 میلیون تومان ارزش بهترین آموزش - دست تو دست! دسترسی
-                    سریع به 24 ساعت آموزش ضبط شده مرحله به مرحله. کسب و کار بالا
-                    آمده خودتو در بهترین روش تحویل بگیر، برای اولین بار. دانش
+                    سریع به آموزش ضبط شده مرحله به مرحله. برای اولین بار. دانش
                     پذیران برای این آموزش 2 میلیون تومان پرداخت می کنند. فقط
                     امروز برای شما 67 هزار تومان
                   </p>

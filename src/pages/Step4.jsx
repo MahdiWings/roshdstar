@@ -1,45 +1,100 @@
-import VideoPlayer from "../components/VideoPlayer";
+// import VideoPlayer from "../components/VideoPlayer";
 import RegistrationForm from "../components/RegistrationForm";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { BsPlayFill } from "react-icons/bs";
+import { BsPauseFill } from "react-icons/bs";
+import step4 from "../images/step4.jpg";
 
 const Step4 = () => {
   document.title = "ثبت نام - مرحله چهارم";
 
   const [video3, setVideo3] = useState("");
-
+  const [banner1, setBanner1] = useState("");
+  const [banner2, setBanner2] = useState("");
   useEffect(() => {
     axios
-      .get("https://roshdstar.onrender.com/api/pages/3")
+      .get("https://api.startemali.ir/api/pages/3")
       .then((res) => {
         setVideo3(res.data.video);
+        setBanner1(res.data.banner[0].bannerUrl);
+        setBanner2(res.data.banner[1].bannerUrl);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.error("error handling", err);
       });
+    window.scrollTo(0, 0);
   }, []);
+  // VideoPlayer
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  const handlePlayPause = () => {
+    const video = document.getElementById("videop");
+    if (!isPlaying) {
+      video.play();
+    } else {
+      video.pause();
+    }
+    setIsPlaying(!isPlaying);
+  };
+  // VideoPlayer
+
   return (
     <>
       <div className=" w-[98vw] h-screen overflow-hidden">
-        <div className="bg-cover w-screen h-screen bg-no-repeat fixed flex justify-center items-center bg-[#010101]"></div>
+        <div className="bg-cover w-screen h-screen bg-no-repeat fixed flex justify-center items-center bg-[#080808]"></div>
         <div className="absolute top-0 left-0 flex-col  flex w-full h-full items-center">
-          <div className="w-full h-auto md:w-[100%]">
-            <div className="">
+          {/* Top Banner2 */}
+          <div className="hidden md:block p-6 w-full bg-[#13222D]"></div>
+
+          <div className=" flex flex-col items-center h-auto">
+            <div className="pt-2 pb-2">
+              {banner1 && (
+                <img
+                  src={banner1}
+                  alt="چطور هر علاقه ای را به یک کسب و کار اطلاعاتی پولدار تبدیل کنید"
+                />
+              )}
+            </div>
+            <div className="xl:max-w-[1350px]">
               <div className="flex gap-8 flex-col  md:flex-row-reverse m-3 lg:mx-16">
                 {/* video player */}
-                <div className="w-full h-full md:w-[86%] outline outline-black outline-8 ">
-                  {video3 && (
-                    <video
-                      controls
-                      controlsList="nodownload"
-                      disablePictureInPicture
-                      id="videoP"
-                      className="w-full"
-                    >
-                      <source src={video3} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  )}
+                <div className="w-full h-full md:w-[86%]">
+                  <div className="relative">
+                    {video3 && (
+                      <div>
+                        <video
+                          poster={step4}
+                          id="videop"
+                          ref={videoRef}
+                          className="w-full"
+                          controls={false}
+                          onClick={handlePlayPause}
+                        >
+                          <source src={video3} type="video/mp4" />
+                        </video>
+                        <div>
+                          <button
+                            onClick={handlePlayPause}
+                            className="absolute right-[45%] bottom-[5px] text-2xl lg:bottom-3 lg:right-[45%] lg:text-3xl text-gray-200 rounded-full p-1 hover:text-white hover:bg-[#070707a6] transition-all"
+                          >
+                            {isPlaying ? <BsPauseFill /> : <BsPlayFill />}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="pt-7">
+                    {banner2 && (
+                      <img
+                        src={banner2}
+                        alt="چطور هر علاقه ای را به یک کسب و کار اطلاعاتی پولدار تبدیل کنید"
+                      />
+                    )}
+                  </div>
                 </div>
                 {/* End video player */}
 
@@ -49,7 +104,7 @@ const Step4 = () => {
               </div>
 
               {/* Start Main Text */}
-              <div className="mt-8 px-5 lg:px-52 py-10  w-full bg-white leading-8">
+              <div className="mt-8 px-5 lg:px-52 py-10 w-full rounded-sm bg-white leading-8">
                 <p>
                   خب بچه ها من سعی کردم کسب وکارم رو 13 سال پیش راه اندازی بکنم
                   و تو این مسیر خیلی دردسرکشیدم و خیلی بالا پایین داشتم و مهم

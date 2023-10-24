@@ -91,7 +91,7 @@ function App() {
           />
           {/* صفحه Congratulations با دسترسی محدود */}
           <Route
-            path="/greeting/Learn"
+            path="greeting/Learn/"
             element={
               isRegistered ? <Congratulations2 /> : <Navigate to="/step4" />
             }
