@@ -138,6 +138,7 @@ const Step6AfterPay = () => {
                         ref={videoRef}
                         className="w-full"
                         controls={false}
+                        playsInline={true}
                         onClick={handlePlayPause}
                       >
                         <source src={video5} type="video/mp4" />

@@ -108,7 +108,7 @@ const Step5AfterPay = () => {
       clearTimeout(timer2);
     };
   }, []);
-  
+
   const handleScroll = () => {
     setScrollState("manual");
   };
@@ -144,7 +144,10 @@ const Step5AfterPay = () => {
   // const navigate = useNavigate();
   return (
     <>
-      <div onScroll={handleScroll} className=" w-[98vw] h-screen overflow-hidden">
+      <div
+        onScroll={handleScroll}
+        className=" w-[98vw] h-screen overflow-hidden"
+      >
         <div className="bg-cover bg-[#0e0e0e] w-screen h-screen bg-no-repeat fixed flex justify-center items-center"></div>
 
         <div className="absolute top-0 left-0 flex-col  flex w-full h-full p-0 items-center">
@@ -164,7 +167,11 @@ const Step5AfterPay = () => {
                 </div>
               </div>
               <div className="mt-5 mx-3 md:flex items-center ">
-                <img src={waitIcon} className="my-3 w-20 md:w-auto" alt="Wait Icon" />
+                <img
+                  src={waitIcon}
+                  className="my-3 w-20 md:w-auto"
+                  alt="Wait Icon"
+                />
                 <div className="flex flex-col mx-2 md:mx-5">
                   <p className="font-black text-[22px]">
                     سفارش شما هنوز تکمیل نشده است...
@@ -179,28 +186,28 @@ const Step5AfterPay = () => {
                 <div className="w-[95%] relative h-full md:w-[94%] mx-auto m-5 mb-4 ">
                   {video4 && (
                     <div>
+                      <video
+                        poster={step5}
+                        id="videop"
+                        ref={videoRef}
+                        className="w-full"
+                        controls={false}
+                        playsInline={true}
+                        onClick={handlePlayPause}
+                      >
+                        <source src={video4} type="video/mp4" />
+                      </video>
 
-                    <video
-                      poster={step5}
-                      id="videop"
-                      ref={videoRef}
-                      className="w-full"
-                      controls={false}
-                      onClick={handlePlayPause}
-                    >
-                      <source src={video4} type="video/mp4" />
-                    </video>
-
-                  <div>
-                    <button
-                      onClick={handlePlayPause}
-                      className="absolute bottom-2 right-[45%] lg:bottom-4 lg:text-4xl lg:right-[48%] text-2xl text-gray-200 rounded-full p-1 hover:text-white hover:bg-[#070707a6] transition-all"
-                    >
-                      {isPlaying ? <BsPauseFill /> : <BsPlayFill />}
-                    </button>
-                  </div>
-                  </div>
-                    )}
+                      <div>
+                        <button
+                          onClick={handlePlayPause}
+                          className="absolute bottom-2 right-[45%] lg:bottom-4 lg:text-4xl lg:right-[48%] text-2xl text-gray-200 rounded-full p-1 hover:text-white hover:bg-[#070707a6] transition-all"
+                        >
+                          {isPlaying ? <BsPauseFill /> : <BsPlayFill />}
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
                   {/* {video2} */}
                   {/* End video player */}

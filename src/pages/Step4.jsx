@@ -71,6 +71,7 @@ const Step4 = () => {
                           ref={videoRef}
                           className="w-full"
                           controls={false}
+                          playsInline={true}
                           onClick={handlePlayPause}
                         >
                           <source src={video3} type="video/mp4" />

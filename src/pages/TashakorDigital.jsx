@@ -134,6 +134,7 @@ const TashakorDigital = () => {
                 ref={videoRef}
                 className="w-full"
                 controls={false}
+                playsInline={true}
                 onClick={handlePlayPause}
               >
                 <source src={videoSrc} type="video/mp4" />
@@ -261,6 +262,7 @@ const TashakorDigital = () => {
                         ref={videoRef}
                         className="w-full"
                         controls={false}
+                        playsInline={true}
                         onClick={handlePlayPause2}
                       >
                         <source src={videoSrc2} type="video/mp4" />

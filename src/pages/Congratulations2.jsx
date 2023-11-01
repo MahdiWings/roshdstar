@@ -9,7 +9,7 @@ import step8 from "../images/step8.jpg";
 import axios from "axios";
 const Congratulations2 = () => {
   // const { name } = useMyContext();
-  // const name = localStorage.getItem("name");
+  const name = localStorage.getItem("name");
 
   document.title = "تبریک - عملیات با موفقیت انجام شد";
   // اگر  محصول 190 یا 90 تومنی رو هم خریده بود این کامپوننت رو نشون بده
@@ -18,7 +18,7 @@ const Congratulations2 = () => {
   const [video8, setVideo8] = useState("");
 
   useEffect(() => {
-    localStorage.clear();
+    // localStorage.clear();
     axios
       .get("https://api.startemali.ir/api/pages/8")
       .then((res) => {
@@ -47,9 +47,10 @@ const Congratulations2 = () => {
     <div className="bg-[#010101] w-full h-full">
       <div>
         <div className="bg-[#21557A] py-6 text-center">
-          <p className="text-white text-xl font-semibold">
-            شما دانشپذیر رشد استار شدید.
-          </p>
+        <p className="text-white text-xl px-2 font-semibold">
+              <span className="text-yellow-300">{name}</span> عزیز شما دانشپذیر
+              رشد استار شدید.
+            </p>
         </div>
         <div className="my-12">
           <img className="mx-auto" src={cang} alt="" />
@@ -63,6 +64,7 @@ const Congratulations2 = () => {
                 ref={videoRef}
                 className="w-full"
                 controls={false}
+                playsInline={true}
                 onClick={handlePlayPause}
               >
                 <source src={video8} type="video/mp4" />
