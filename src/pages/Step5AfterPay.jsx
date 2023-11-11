@@ -66,12 +66,14 @@ const Step5AfterPay = () => {
   const totalPrice = firstProduct.price;
 
   const handleProductOrder = async () => {
+    const userName = localStorage.getItem("name");
     const userEmail = localStorage.getItem("email");
     const userPassword = localStorage.getItem("password");
     try {
       const response = await axios.post(
         "https://api.startemali.ir/api/payment",
         {
+          fullName: userName,
           email: userEmail,
           password: userPassword,
           title: firstProduct.title,

@@ -105,6 +105,7 @@ const RegistrationForm = () => {
     const formData = {
       email: email,
       password: phoneNumber,
+      fullName: name,
       code: verifyCode,
     };
     try {
@@ -147,6 +148,7 @@ const RegistrationForm = () => {
   const handleProductOrder = async (event) => {
     event.preventDefault();
     const totalPrice = calculateTotalPrice();
+    const userName = localStorage.getItem("name");
     const userEmail = localStorage.getItem("email");
     const userPassword = localStorage.getItem("password");
     try {
@@ -154,6 +156,7 @@ const RegistrationForm = () => {
       const response = await axios.post(
         "https://api.startemali.ir/api/payment",
         {
+          fullName: userName,
           email: userEmail,
           password: userPassword,
           title: firstProduct.title,

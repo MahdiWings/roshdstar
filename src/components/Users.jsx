@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import { BiSolidMessageSquareEdit } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
 import Modal from "react-modal";
 
 const Users = () => {
@@ -14,20 +15,23 @@ const Users = () => {
   const [editEmail, setEditEmail] = useState("");
   const [editPassword, setEditPassword] = useState("");
   const [id, setId] = useState("");
+  // Search Box
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredUsers, setFilteredUsers] = useState(users);
+
+  
+  // Search Box
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     setToken(storedToken);
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(
-          "https://api.startemali.ir/api/user",
-          {
-            headers: {
-              authorization: `Bearer ${storedToken}`,
-            },
-          }
-        );
+        const response = await axios.get("https://api.startemali.ir/api/user", {
+          headers: {
+            authorization: `Bearer ${storedToken}`,
+          },
+        });
         console.log(response);
         setUsers(response.data);
       } catch (error) {
@@ -47,14 +51,11 @@ const Users = () => {
   const confirmDelete = () => {
     // انجام حذف کاربر از API و بستن مدال تأیید حذف
     axios
-      .delete(
-        `https://api.startemali.ir/api/user/delete/${userToDelete}`,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .delete(`https://api.startemali.ir/api/user/delete/${userToDelete}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then(() => {
         // بعد از حذف کاربر، لیست کاربران را به روز کنید
         const updatedUsers = users.filter(
@@ -120,31 +121,55 @@ const Users = () => {
         alert("خطا در بروزرسانی کاربر:", error.message);
       });
   };
+  useEffect(() => {
+    const filtered = users.filter(
+      (user) =>
+        user.email.includes(searchTerm) ||
+        user.phoneNumber.includes(searchTerm)  ||
+        (user.fullName && user.fullName.includes(searchTerm))
+    );
+    setFilteredUsers(filtered);
+  }, [searchTerm, users]);
 
   return (
-    <div className="w-[98%] lg:w-[80%] mx-auto mt-14 shadow-xl px-7 rounded-xl h-[500px] mb-20 bg-white border-[0.2px] overflow-x-auto py-5">
+    <div className="w-[98%] lg:w-[88%] mx-auto mt-14 shadow-xl px-5 rounded-xl h-[500px] mb-20 bg-white border-[0.2px] overflow-x-auto py-5">
       <div>
         <h2 className="pb-3 text-xl font-bold">لیست کاربران</h2>
+        <div className="w-[80%] flex mb-5 bg-gray-50 mt-2 mx-auto shadow-md border-gray-300 border-[1px] rounded-xl">
+          <input
+            className="w-[90%] rounded-xl outline-none bg-gray-50 px-3 py-2.5 "
+            placeholder="جستجو کاربر..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <div className="w-[10%] flex justify-center items-center rounded-l-lg rounded-bl-lg">
+            <BiSearch className="text-[#193daa] text-4xl md:text-3xl" />
+          </div>
+        </div>
         <table className="w-[100%]">
           <thead>
             <tr className="flex bg-[#F8F9FA] shadow-sm rounded-xl px-4 py-3 justify-between items-center">
-              <th className="w-[415px]">ایمیل</th>
-              <th className="w-[40%]">شماره تلفن</th>
-              <th className="w-[25%]">تاریخ ثبت نام</th>
-              <th className="w-[25%]">عملیات</th>
+              <th className="w-[180px]">نام و نام خانوادگی</th>
+              <th className="w-[190px]">ایمیل</th>
+              <th className="w-[100px]">شماره تلفن</th>
+              <th className="w-[90px]">تاریخ ثبت نام</th>
+              <th className="w-[110px]">عملیات</th>
             </tr>
           </thead>
           <tbody>
-            {users &&
-              users.map((user, index) => (
+            {filteredUsers &&
+              filteredUsers.map((user, index) => (
                 <tr
                   className="flex justify-start text-center py-4 hover:bg-[#F8F9FA] pr-4 items-center"
                   key={index}
                 >
-                  <td className="w-[284px]">{user.email}</td>
-                  <td className="w-[29%]">{user.phoneNumber}</td>
-                  <td className="w-[16%]">{user.updatedAt.slice(0, 10)}</td>
-                  <td className="w-[20%]">
+                  <td className="w-[200px]">{user.fullName}</td>
+                  <td className="w-[300px]">{user.email}</td>
+                  <td className="w-[19%] mr-2.5">{user.phoneNumber}</td>
+                  <td className="w-[17%] ml-2 mr-2">
+                    {user.updatedAt.slice(0, 10)}
+                  </td>
+                  <td className="w-[18%] mr-2">
                     <button onClick={() => handleEdit(user._id)}>
                       <BiSolidMessageSquareEdit className="text-xl m-1 lg:text-2xl" />
                     </button>

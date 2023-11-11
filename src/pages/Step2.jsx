@@ -198,7 +198,7 @@ const Step2 = () => {
             </div>
           </div>
           <Link
-            to={"https://wingswebs.ir/"}
+            to={"https://mahdiwings.github.io/wingsweb/"}
             target="_blank"
             className="pb-8 text-white pt-2"
           >
