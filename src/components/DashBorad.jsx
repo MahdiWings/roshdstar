@@ -16,7 +16,7 @@ const DashBorad = () => {
     setToken(storedToken);
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("https://api.startemali.ir/api/user", {
+        const response = await axios.get("https://startmali.runflare.run/api/user", {
           headers: {
             authorization: `Bearer ${storedToken}`,
           },
@@ -32,7 +32,7 @@ const DashBorad = () => {
     const fetchPurchases = async () => {
       try {
         const response = await axios.get(
-          "https://api.startemali.ir/api/payment",
+          "https://startmali.runflare.run/api/payment",
           {
             headers: {
               authorization: `Bearer ${storedToken}`,

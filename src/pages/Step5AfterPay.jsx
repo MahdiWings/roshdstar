@@ -26,7 +26,7 @@ const Step5AfterPay = () => {
 
   useEffect(() => {
     axios
-      .get("https://api.startemali.ir/api/pages/5")
+      .get("https://startmali.runflare.run/api/pages/5")
       .then((res) => {
         setVideo4(res.data.video);
       })
@@ -40,7 +40,7 @@ const Step5AfterPay = () => {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://api.startemali.ir/api/products",
+        "https://startmali.runflare.run/api/products",
         {
           headers: {
             authorization: `${apiKey}`,
@@ -71,7 +71,7 @@ const Step5AfterPay = () => {
     const userPassword = localStorage.getItem("password");
     try {
       const response = await axios.post(
-        "https://api.startemali.ir/api/payment",
+        "https://startmali.runflare.run/api/payment",
         {
           fullName: userName,
           email: userEmail,

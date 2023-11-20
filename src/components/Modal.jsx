@@ -15,7 +15,7 @@ export default function Modal() {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://api.startemali.ir/api/products",
+        "https://startmali.runflare.run/api/products",
         {
           headers: {
             authorization: `${apiKey}`,
@@ -64,7 +64,7 @@ export default function Modal() {
     // console.log(product);
     try {
       const response = await axios.post(
-        "https://api.startemali.ir/api/products/email",
+        "https://startmali.runflare.run/api/products/email",
         {
           email,
           _id: product._id,
@@ -76,7 +76,8 @@ export default function Modal() {
       navigate("/step2");
     } catch (error) {
       console.log(error.response.data);
-      alert("عملیات ناموفق، دوباره امتحان کنید", error);
+      navigate("/step2");
+      // alert("عملیات ناموفق، دوباره امتحان کنید", error);
     }
     setShowModal(false);
   };

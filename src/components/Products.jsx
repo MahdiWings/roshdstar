@@ -22,7 +22,7 @@ const Products = () => {
   const fetchBanner = async () => {
     try {
       const res = await axios
-        .get("https://api.startemali.ir/api/pages/3")
+        .get("https://startmali.runflare.run/api/pages/3")
         .then((res) => {
           setImageUrl1(res.data);
           console.log(res.data);
@@ -36,7 +36,7 @@ const Products = () => {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://api.startemali.ir/api/products",
+        "https://startmali.runflare.run/api/products",
         {
           headers: {
             authorization: `${apiKey}`,
@@ -89,7 +89,7 @@ const Products = () => {
   const updateBanners = (banners) => {
     axios
       .patch(
-        "https://api.startemali.ir/api/pages/3",
+        "https://startmali.runflare.run/api/pages/3",
         { banner: banners },
         {
           headers: {
@@ -125,7 +125,7 @@ const Products = () => {
 
     axios
       .patch(
-        `https://api.startemali.ir/api/products/${product.pageNumber}`,
+        `https://startmali.runflare.run/api/products/${product.pageNumber}`,
         updateData,
         {
           headers: {

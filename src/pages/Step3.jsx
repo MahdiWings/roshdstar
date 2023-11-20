@@ -15,7 +15,7 @@ const Step3 = () => {
 
   useEffect(() => {
     axios
-      .get("https://api.startemali.ir/api/pages/2")
+      .get("https://startmali.runflare.run/api/pages/2")
       .then((res) => {
         setVideo2(res.data.video);
       })
@@ -243,7 +243,7 @@ const Step3 = () => {
             </div>
           </div>
           <Link
-            to={"https://mahdiwings.github.io/wingsweb/"}
+            to={"https://wings-web.onrender.com/"}
             target="_blank"
             className="pb-8 text-white pt-2"
           >

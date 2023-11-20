@@ -75,7 +75,7 @@ const Movies = () => {
     try {
       // ارسال درخواست به بک‌اند برای آپدیت URL اول
       const response = await axios.patch(
-        "https://api.startemali.ir/api/pages/1",
+        "https://startmali.runflare.run/api/pages/1",
         {
           video: MovieUrl1,
         }
@@ -92,7 +92,7 @@ const Movies = () => {
     try {
       // ارسال درخواست به بک‌اند برای آپدیت URL دوم
       const response = await axios.patch(
-        "https://api.startemali.ir/api/pages/2",
+        "https://startmali.runflare.run/api/pages/2",
         {
           video: MovieUrl2,
         }
@@ -109,7 +109,7 @@ const Movies = () => {
     try {
       // ارسال درخواست به بک‌اند برای آپدیت URL سوم
       const response = await axios.patch(
-        "https://api.startemali.ir/api/pages/3",
+        "https://startmali.runflare.run/api/pages/3",
         {
           video: MovieUrl3,
         }
@@ -125,7 +125,7 @@ const Movies = () => {
     try {
       // ارسال درخواست به بک‌اند برای آپدیت URL سوم
       const response = await axios.patch(
-        "https://api.startemali.ir/api/pages/4",
+        "https://startmali.runflare.run/api/pages/4",
         {
           video: MovieUrl4,
         }
@@ -141,7 +141,7 @@ const Movies = () => {
     try {
       // ارسال درخواست به بک‌اند برای آپدیت URL سوم
       const response = await axios.patch(
-        "https://api.startemali.ir/api/pages/5",
+        "https://startmali.runflare.run/api/pages/5",
         {
           video: MovieUrl5,
         }
@@ -157,7 +157,7 @@ const Movies = () => {
     try {
       // ارسال درخواست به بک‌اند برای آپدیت URL سوم
       const response = await axios.patch(
-        "https://api.startemali.ir/api/pages/6",
+        "https://startmali.runflare.run/api/pages/6",
         {
           video: MovieUrl6,
         }
@@ -173,7 +173,7 @@ const Movies = () => {
     try {
       // ارسال درخواست به بک‌اند برای آپدیت URL سوم
       const response = await axios.patch(
-        "https://api.startemali.ir/api/pages/7",
+        "https://startmali.runflare.run/api/pages/7",
         {
           video: MovieUrl7,
         }
@@ -189,7 +189,7 @@ const Movies = () => {
     try {
       // ارسال درخواست به بک‌اند برای آپدیت URL سوم
       const response = await axios.patch(
-        "https://api.startemali.ir/api/pages/8",
+        "https://startmali.runflare.run/api/pages/8",
         {
           video: MovieUrl8,
         }

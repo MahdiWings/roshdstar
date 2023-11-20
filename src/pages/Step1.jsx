@@ -13,7 +13,7 @@ const Step1 = () => {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://api.startemali.ir/api/products",
+        "https://startmali.runflare.run/api/products",
         {
           headers: {
             authorization: `${apiKey}`,

@@ -27,7 +27,7 @@ const Users = () => {
     setToken(storedToken);
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("https://api.startemali.ir/api/user", {
+        const response = await axios.get("https://startmali.runflare.run/api/user", {
           headers: {
             authorization: `Bearer ${storedToken}`,
           },
@@ -51,7 +51,7 @@ const Users = () => {
   const confirmDelete = () => {
     // انجام حذف کاربر از API و بستن مدال تأیید حذف
     axios
-      .delete(`https://api.startemali.ir/api/user/delete/${userToDelete}`, {
+      .delete(`https://startmali.runflare.run/api/user/delete/${userToDelete}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -96,7 +96,7 @@ const Users = () => {
     // ارسال درخواست به API برای به‌روزرسانی اطلاعات کاربر
     axios
       .patch(
-        `https://api.startemali.ir/api/user/update/${id}`,
+        `https://startmali.runflare.run/api/user/update/${id}`,
         {
           email: editEmail,
           password: editPassword,

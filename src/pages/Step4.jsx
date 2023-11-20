@@ -14,7 +14,7 @@ const Step4 = () => {
   const [banner2, setBanner2] = useState("");
   useEffect(() => {
     axios
-      .get("https://api.startemali.ir/api/pages/3")
+      .get("https://startmali.runflare.run/api/pages/3")
       .then((res) => {
         setVideo3(res.data.video);
         setBanner1(res.data.banner[0].bannerUrl);

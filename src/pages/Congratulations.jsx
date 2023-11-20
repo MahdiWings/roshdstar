@@ -17,7 +17,7 @@ const Congratulations = () => {
   useEffect(() => {
     // localStorage.clear();
     axios
-      .get("https://api.startemali.ir/api/pages/7")
+      .get("https://startmali.runflare.run/api/pages/7")
       .then((res) => {
         setVideo7(res.data.video);
       })

@@ -32,7 +32,7 @@ const TashakorDigital = () => {
   useEffect(() => {
     // عکس و تایتل کتاب اول
     axios
-      .get("https://api.startemali.ir/api/products", {
+      .get("https://startmali.runflare.run/api/products", {
         headers: {
           authorization: `${apiKey}`,
           "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const TashakorDigital = () => {
     // عکس و تایتل کتاب دوم
 
     axios
-      .get("https://api.startemali.ir/api/products", {
+      .get("https://startmali.runflare.run/api/products", {
         headers: {
           authorization: `${apiKey}`,
           "Content-Type": "application/json",
@@ -66,7 +66,7 @@ const TashakorDigital = () => {
       });
 
     axios
-      .get("https://api.startemali.ir/api/pages/4")
+      .get("https://startmali.runflare.run/api/pages/4")
       .then((res) => {
         setVideoSrc(res.data.video);
         // console.log(res.data);
@@ -76,7 +76,7 @@ const TashakorDigital = () => {
       });
 
     axios
-      .get("https://api.startemali.ir/api/pages/3")
+      .get("https://startmali.runflare.run/api/pages/3")
       .then((res) => {
         setVideoSrc2(res.data.video);
         // console.log(res.data);

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { IoArrowBack } from "react-icons/io5";
 import { IoMdLock } from "react-icons/io";
 import { useMyContext } from "./MyContext";
 import arrowflash from "../images/arrow-flash-small.gif";
@@ -28,11 +29,16 @@ const RegistrationForm = () => {
   // Step 3
   const [amount, setAmount] = useState(0);
 
+  const handelBackStep = () => {
+    setStep(1);
+    setCode("")
+  };
+
   const fetchProducts = async () => {
     const apiKey = "k8LknC4kyMbDQ9H6I0uVmTXJgL81Mh";
     try {
       const response = await axios.get(
-        "https://api.startemali.ir/api/products",
+        "https://startmali.runflare.run/api/products",
         {
           headers: {
             authorization: `${apiKey}`,
@@ -86,7 +92,7 @@ const RegistrationForm = () => {
 
     try {
       const response = await axios.post(
-        "https://api.startemali.ir/api/user/verifycode",
+        "https://startmali.runflare.run/api/user/verifycode",
         {
           password: phoneNumber,
         }
@@ -101,7 +107,7 @@ const RegistrationForm = () => {
   // برای ثبت نام
   const handleSubmitcode = async (newcode) => {
     const verifyCode = Number(newcode);
-    const responseUrl = "https://api.startemali.ir/api/user/signup";
+    const responseUrl = "https://startmali.runflare.run/api/user/signup";
     const formData = {
       email: email,
       password: phoneNumber,
@@ -154,7 +160,7 @@ const RegistrationForm = () => {
     try {
       // console.log(email);
       const response = await axios.post(
-        "https://api.startemali.ir/api/payment",
+        "https://startmali.runflare.run/api/payment",
         {
           fullName: userName,
           email: userEmail,
@@ -272,14 +278,30 @@ const RegistrationForm = () => {
 
           {step === 2 && (
             <div>
-              <div className="flex flex-col justify-center items-center w-full">
-                <p className="text-white mt-5 ">
+              <div className="flex flex-col relative justify-center items-center w-full">
+                <div className="absolute -top-5 left-4">
+                  <IoArrowBack
+                    onClick={handelBackStep}
+                    className="text-4xl cursor-pointer text-white hover:bg-blue-800 rounded-3xl"
+                  />
+                </div>
+                <p className="text-white text-[17px] mt-7 mb-[18px] ">
                   رمز یکبار مصرف خود را وارد کنید
                 </p>
+                {phoneNumber && (
+                  <p className="text-[15px] text-white">
+                    کد تایید به شماره
+                    <span className="text-yellow-300 text-[16px]">
+                      {" "}
+                      {phoneNumber}{" "}
+                    </span>{" "}
+                    ارسال گردید
+                  </p>
+                )}
                 <input
                   type="text"
                   placeholder="----"
-                  className="block tracking-[15px] w-[85%] mb-5 my-6 text-center placeholder:text-gray-700 p-2 border rounded"
+                  className="block tracking-[15px] w-[85%] mb-3 mt-4 text-center placeholder:text-gray-700 p-2 border rounded"
                   value={code}
                   maxLength="4"
                   onChange={handlecodeChange}
@@ -356,9 +378,9 @@ const RegistrationForm = () => {
                       پیشنهادی فقط برای یکبار - فقط 67 هزار تومان:
                     </span>{" "}
                     بیش از 2 میلیون تومان ارزش بهترین آموزش - دست تو دست! دسترسی
-                    سریع به آموزش ضبط شده چرخدنده پولسازی مرحله به مرحله. برای اولین بار. دانش
-                    پذیران برای این آموزش 2 میلیون تومان پرداخت می کنند. فقط
-                    امروز برای شما 67 هزار تومان
+                    سریع به آموزش ضبط شده چرخدنده پولسازی مرحله به مرحله. برای
+                    اولین بار. دانش پذیران برای این آموزش 2 میلیون تومان پرداخت
+                    می کنند. فقط امروز برای شما 67 هزار تومان
                   </p>
                 </div>
                 <div className="text-center mx-7 my-5">

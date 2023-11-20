@@ -10,7 +10,7 @@ const AdminPanel2 = () => {
     const token = localStorage.getItem('token');
     const requireAuth = async () => {
       try {
-        const response = await axios.get('https://api.startemali.ir/api/user/isadmin', {
+        const response = await axios.get('https://startmali.runflare.run/api/user/isadmin', {
       headers: {
         authorization: `Bearer ${token}` // Include the token in the request headers
       }

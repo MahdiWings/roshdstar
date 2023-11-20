@@ -12,7 +12,7 @@ const LoginAdmin = () => {
 
     try {
       const response = await axios.post(
-        "https://api.startemali.ir/api/user/admin/login",
+        "https://startmali.runflare.run/api/user/admin/login",
         {
           email: email,
           password: password,
