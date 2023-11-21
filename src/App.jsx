@@ -4,7 +4,7 @@ import Step1 from "./pages/Step1";
 import Step3 from "./pages/Step3";
 import Step4 from "./pages/Step4";
 import Step2 from "./pages/Step2";
-import Step5AfterPay from "./pages/step5AfterPay";
+import Step5AfterPay from "./pages/Step5AfterPay";
 import Step6AfterPay from "./pages/Step6AfterPay";
 import Congratulations from "./pages/Congratulations";
 import LoginAdmin from "./pages/LoginAdmin";
