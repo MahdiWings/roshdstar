@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Step1 from "../src/pages/Step1";
-import Step3 from "../src/pages/Step3";
-import Step4 from "../src/pages/step4";
-import Step2 from "../src/pages/Step2";
-import Step5AfterPay from "../src/pages/step5AfterPay";
-import Step6AfterPay from "../src/pages/Step6AfterPay";
-import Congratulations from "../src/pages/Congratulations";
-import LoginAdmin from "../src/pages/LoginAdmin";
-import TashakorDigital from "../src/pages/TashakorDigital";
-import AdminPanel2 from "../src/pages/AdminPanel2";
-import DashBorad from "../src/components/DashBorad";
-import Products from "../src/components/Products";
-import Movies from "../src/components/Movies";
-import Information from "../src/components/Information";
-import Congratulations2 from "../src/pages/Congratulations2";
+import Step1 from "./pages/Step1.jsx";
+import Step3 from "./pages/Step3.jsx";
+import Step4 from "./pages/step4.jsx";
+import Step2 from "./pages/Step2.jsx";
+import Step5AfterPay from "./pages/step5AfterPay.jsx";
+import Step6AfterPay from "./pages/Step6AfterPay.jsx";
+import Congratulations from "./pages/Congratulations.jsx";
+import LoginAdmin from "./pages/LoginAdmin.jsx";
+import TashakorDigital from "./pages/TashakorDigital.jsx";
+import AdminPanel2 from "./pages/AdminPanel2.jsx";
+import DashBorad from "./components/DashBorad.jsx";
+import Products from "./components/Products.jsx";
+import Movies from "./components/Movies.jsx";
+import Information from "./components/Information.jsx";
+import Congratulations2 from "./pages/Congratulations2.jsx";
 
 const TokenContext = React.createContext();
 function App() {
